@@ -7,9 +7,10 @@
 - Replace rm by `trash-cli` in [neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim)
 - Install Lazygit, Lazydocker
 - Install Neovim v0.10+
+- Install tmux
     - Ubuntu
     ```bash
-    sudo apt install -y stow git fzf ripgrep trash-cli
+    sudo apt install -y stow git fzf ripgrep trash-cli tmux
     ## Lazygit
     LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*')
     curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
@@ -25,12 +26,15 @@
     ```
     - Arch
     ```bash
-    paru -S stow git fzf ripgrep trash-cli lazygit neovim wl-clipboard kitty
+    paru -S stow git fzf ripgrep trash-cli lazygit neovim wl-clipboard kitty tmux
     ```
 
 - Clean
 ```bash
 rm ~/.bashrc
+rm ~/.tmux.conf
+rm -rf ~/.tmux
+rm -rf ~/.config/kitty
 rm -rf ~/.config/nvim
 rm -rf ~/.local/state/nvim
 rm -rf ~/.local/share/nvim
@@ -42,7 +46,10 @@ rm -rf ~/.local/share/nvim
 ```bash
 git clone https://github.com/lvdund/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles 
-stow .
+stow bash
+stow nvim
+stow tmux
+stow kitty
 cd
 source ~/.bashrc
 ```
