@@ -28,8 +28,9 @@
     paru -S stow git fzf ripgrep trash-cli lazygit neovim wl-clipboard kitty
     ```
 
-- Clean nvim cache
+- Clean
 ```bash
+rm ~/.bashrc
 rm -rf ~/.config/nvim
 rm -rf ~/.local/state/nvim
 rm -rf ~/.local/share/nvim
