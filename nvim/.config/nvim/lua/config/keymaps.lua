@@ -5,6 +5,8 @@ local opts = { noremap = true, silent = true }
 map("n", "<Esc>", "<cmd>nohlsearch<CR>")
 map("n", "'", ":", opts)
 map("i", "jk", "<ESC>", opts)
+map("n", "<leader>w", "<cmd>w<cr>", { desc = "Save" })
+map("n", "<leader>r", "<cmd>source /home/vd/.config/nvim/init.lua<cr>", { desc = "[R]eload nvim" })
 
 -- General keymaps
 map("n", "<C-left>", "<C-w><C-h>", { desc = "Move focus to the left window" })
@@ -19,10 +21,6 @@ map("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 map("n", "dw", "vb_d") -- delete a word backup
 map("n", "<C-a>", "gg<S-v>G") -- select all
 map("n", "<C-s>", ":wa<CR>", { desc = "Save file" }) -- Save file
-
--- map("n", "<leader>qq", ":q<CR>", { desc = "[Q]uit Buffer" })
--- map("n", "<leader>qa", ":wqa<CR>", { desc = "[Q]uit & save [A]ll" })
--- map("n", "<leader>qc", ":qa!<CR>", { desc = "[Q]uit not Save" })
 
 -- Move a line up or down in normal mode
 map("n", "<A-down>", ":m .+1<CR>==", { desc = "Move line down", noremap = true, silent = true })
@@ -62,9 +60,6 @@ map("n", "<leader>gt", ":Gitsigns toggle_current_line_blame<CR>", { desc = "[G]i
 map("n", "<leader>gg", ":LazyGit<CR>", { desc = "Lazy[G]it" })
 map("n", "<leader>gf", ":LazyGitFilterCurrentFile<CR>", { desc = "Current [F]ile" })
 map("n", "<leader>gs", ":TermExec cmd='git status'<CR>", { desc = "[S]tatus" })
-
--- Term
--- map("n", "<C-\\>", ":ToggleTerm<CR>", opts)
 
 -- Neo-tree
 map("n", "\\", "<Cmd>Neotree position=float reveal<CR>")

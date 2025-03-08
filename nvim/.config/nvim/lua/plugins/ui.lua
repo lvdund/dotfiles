@@ -23,7 +23,7 @@ return {
 		event = "VeryLazy",
 		opts = {
 			presets = {
-				bottom_search = true, -- use a classic bottom cmdline for search
+				bottom_search = true,
 				command_palette = true, -- position the cmdline and popupmenu together
 				long_message_to_split = true, -- long messages will be sent to a split
 				inc_rename = false, -- enables an input dialog for inc-rename.nvim
@@ -31,11 +31,7 @@ return {
 			},
 		},
 		dependencies = {
-			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
 			"MunifTanjim/nui.nvim",
-			-- OPTIONAL:
-			--   `nvim-notify` is only needed, if you want to use the notification view.
-			--   If not available, we use `mini` as the fallback
 			"rcarriga/nvim-notify",
 		},
 	},
@@ -46,12 +42,6 @@ return {
 		---@type ibl.config
 		opts = {},
 	},
-	-- For highlight pannel
-	-- {
-	-- 	"nvim-zh/colorful-winsep.nvim",
-	-- 	config = true,
-	-- 	event = { "WinLeave" },
-	-- },
 	{
 		"ya2s/nvim-cursorline",
 		config = function()
@@ -73,41 +63,4 @@ return {
 		"karb94/neoscroll.nvim",
 		opts = {},
 	},
-	-- {
-	-- 	"Isrothy/neominimap.nvim",
-	-- 	version = "v3.*.*",
-	-- 	enabled = true,
-	-- 	lazy = false,
-	-- 	keys = {
-	-- 		{ "<leader>nm", "<cmd>Neominimap toggle<cr>", desc = "Toggle global minimap" },
-	-- 		{ "<leader>nn", "<cmd>Neominimap toggleFocus<cr>", desc = "Switch focus on minimap" },
-	-- 	},
-	-- 	init = function()
-	-- 		-- The following options are recommended when layout == "float"
-	-- 		vim.g.neominimap = {
-	-- 			auto_enable = true,
-	-- 			x_multiplier = 5,
-	-- 			float = {
-	-- 				minimap_width = 8,
-	-- 				margin = {
-	-- 					right = 0,
-	-- 					top = 0,
-	-- 					bottom = 0,
-	-- 				},
-	-- 			},
-	-- 			click = {
-	-- 				enabled = true,
-	-- 				auto_switch_focus = true,
-	-- 			},
-	-- 		}
-	-- 	end,
-	-- },
-	-- {
-	-- 	"folke/zen-mode.nvim",
-	-- 	opts = {
-	-- 		window = {
-	-- 			width = 0.85, -- width will be 85% of the editor width
-	-- 		},
-	-- 	},
-	-- },
 }

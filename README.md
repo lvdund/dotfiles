@@ -56,9 +56,11 @@ source ~/.bashrc
 - Install golang
 ```bash
 mkdir -p ~/env/golang/gopath/go1.23.6/{bin,pkg,src}
-mkdir -p ~/env/golang/goroot/go1.23.6
+mkdir -p ~/env/golang/goroot
 wget https://dl.google.com/go/go1.23.6.linux-amd64.tar.gz
-sudo tar -C ~/env/golang/goroot/go1.23.6 -zxvf go1.23.6.linux-amd64.tar.gz
+tar -C ~/env/golang/goroot/go1.23.6 -zxvf go1.23.6.linux-amd64.tar.gz
+mv go go1.23.6
+# rm go1.23.6.linux-amd64.tar.gz
 ```
 - Install Golang dependencies:
 ```bash
@@ -68,4 +70,10 @@ go install golang.org/x/tools/cmd/goimports@latest
 go install github.com/fatih/gomodifytags@latest
 ## Lazydocker
 go install github.com/jesseduffield/lazydocker@latest
+```
+
+## Hyprland
+
+```bash
+paru -S hyprland hyprpaper waybar rofi swaync pavucontrol
 ```

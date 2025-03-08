@@ -1,0 +1,67 @@
+/* Colors */
+
+@define-color foreground {foreground};
+@define-color background {background};
+@define-color cursor {cursor};
+
+@define-color color0 {color0};
+@define-color color1 {color1};
+@define-color color2 {color2};
+@define-color color3 {color3};
+@define-color color4 {color4};
+@define-color color5 {color5};
+@define-color color6 {color6};
+@define-color color7 {color7};
+@define-color color8 {color8};
+@define-color color9 {color9};
+@define-color color10 {color10};
+@define-color color11 {color11};
+@define-color color12 {color12};
+@define-color color13 {color13};
+@define-color color14 {color14};
+@define-color color15 {color15};
+
+@define-color background #242424;
+@define-color groupbackground #363636;
+@define-color buttoncolor #4a4a4a;
+@define-color bordercolor @color11;
+@define-color fontcolor #FFFFFF;
+
+* {
+    font-family: "Fira Sans Semibold";
+}
+
+/* Control Center */
+
+.control-center {
+    border: 3px solid @bordercolor;
+    padding: 10px;
+}
+
+button {
+    border: 0px;
+    min-width: 35px;
+    background: @buttoncolor;
+}
+
+.notification-group-header {
+    font-size: 14px;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button {
+    margin:5px;
+}
+
+/* Notification */
+
+.notification {
+    border: 3px solid @bordercolor;
+	border-radius: 10px;
+    padding:10px;
+}
+
+.notification-default-action:hover,
+.notification-action:hover {
+    color: #ffffff;
+    background: transparent;
+}

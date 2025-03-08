@@ -1,0 +1,91 @@
+{
+    "custom/arch": {
+        "format": "󰣇",
+        "tooltip": true,
+        "tooltip-format": "btw"
+    },
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "warp-on-scroll": false,
+        "format": "{name}",
+        "format-icons": {
+            "urgent": "",
+            "active": "",
+            "default": ""
+        }
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "pulseaudio": {
+        "format": "{icon}  {volume}%",
+        "format-bluetooth": "{icon} {volume}%  {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click-right": "pavucontrol"
+    },
+	"pulseaudio#mic": {
+		"scroll-step": 0,
+		"format": "{format_source}",
+		"format-source": " ",
+		"format-source-muted": " ",
+		"on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+	},
+    "cpu": {
+        "format": "  {usage}%",
+        "tooltip": true
+    },
+    "memory": {
+        "format": "  {}%",
+		"tooltip": true
+    },
+    "hyprland/language": {
+       "format": "  {}",
+       "format-en": "EN",
+       "format-vn": "VN"
+    },
+	"tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        "format": "{:%H:%M | %e %B} ",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+	"clock": {
+		"interval": 5,
+		"format": "{:%H:%M | %e %B} ",
+		"format-alt": "{:%Y-%m-%d}",
+		"tooltip-format": "<tt><big>{calendar}</big></tt>",
+		"calendar": {
+							"mode"          : "month",
+							"mode-mon-col"  : 3,
+							"weeks-pos"     : "right",
+							"on-scroll"     : 1,
+							"format": {
+									  "months":     "<span color='#ffead3'><b>{}</b></span>",
+									  "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+									  "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+									  "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+									  "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+					}
+		}
+	},
+}
