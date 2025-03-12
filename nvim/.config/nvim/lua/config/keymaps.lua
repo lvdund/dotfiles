@@ -6,7 +6,7 @@ map("n", "<Esc>", "<cmd>nohlsearch<CR>")
 map("n", "'", ":", opts)
 map("i", "jk", "<ESC>", opts)
 map("n", "<leader>w", "<cmd>w<cr>", { desc = "Save" })
-map("n", "<leader>r", "<cmd>source /home/vd/.config/nvim/init.lua<cr>", { desc = "[R]eload nvim" })
+-- map("n", "<leader>r", "<cmd>source /home/vd/.config/nvim/init.lua<cr>", { desc = "[R]eload nvim" })
 
 -- General keymaps
 map("n", "<C-left>", "<C-w><C-h>", { desc = "Move focus to the left window" })
@@ -86,10 +86,10 @@ local keymap = {
 	-- ["<C-b>"] = function() neoscroll.ctrl_b({ duration = 450 }) end;
 	-- ["<C-f>"] = function() neoscroll.ctrl_f({ duration = 450 }) end;
 	["<PageUp>"] = function()
-		neoscroll.scroll(-0.1, { move_cursor = false, duration = 70 })
+		neoscroll.scroll(-0.1, { move_cursor = true, duration = 70 })
 	end,
 	["<PageDown>"] = function()
-		neoscroll.scroll(0.1, { move_cursor = false, duration = 70 })
+		neoscroll.scroll(0.1, { move_cursor = true, duration = 70 })
 	end,
 	-- ["zt"]    = function() neoscroll.zt({ half_win_duration = 250 }) end;
 	-- ["zz"]    = function() neoscroll.zz({ half_win_duration = 250 }) end;
