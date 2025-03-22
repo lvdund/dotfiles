@@ -42,16 +42,16 @@ return { -- Useful plugin to show you pending keybinds.
 
 		-- Document existing key chains
 		spec = {
-			{ "<leader>b", group = "[B]uffer" },
-			{ "<leader>c", group = "[C]ocde" },
-			{ "<leader>e", group = "[E]rror" },
-			{ "<leader>m", group = "[M]ark" },
+			{ "<leader>b", group = "Buffer" },
+			{ "<leader>c", group = "Code" },
+			{ "<leader>e", group = "Error" },
+			{ "<leader>m", group = "Mark" },
 			{ "<leader>n", group = "MiniMap" },
-			{ "<leader>g", group = "[G]it", mode = { "n", "v" } },
-			-- { "<leader>q", group = "[Q]uit" },
-			{ "<leader>s", group = "[S]earch" },
-			{ "<leader>sc", group = "[S]earch Todo-[C]omment" },
-			{ "<leader>sd", group = "[S]earch [D]iagnostic" },
+			{ "<leader>g", group = "Git", mode = { "n", "v" } },
+			{ "<leader>s", group = "Search" },
+			{ "<leader>sc", group = "Search Todo-Comment" },
+			{ "[", group = "prev" },
+			{ "]", group = "next" },
 		},
 	},
 }

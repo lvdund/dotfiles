@@ -10,7 +10,7 @@ PS1='[\u@\h \W]\$ '
 # alias
 # alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-alias ls='lsd'
+alias ls='lsd -la'
 alias v='nvim'
 alias grep='grep --color=auto'
 alias cls="printf '\033[2J\033[3J\033[1;1H'"
