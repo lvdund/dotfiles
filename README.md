@@ -53,9 +53,9 @@ source ~/.bashrc
 mkdir -p ~/env/golang/gopath/go1.23.6/{bin,pkg,src}
 mkdir -p ~/env/golang/goroot
 wget https://dl.google.com/go/go1.23.6.linux-amd64.tar.gz
-tar -C ~/env/golang/goroot/go1.23.6 -zxvf go1.23.6.linux-amd64.tar.gz
-mv go go1.23.6
-# rm go1.23.6.linux-amd64.tar.gz
+tar -C ~/env/golang/goroot -zxvf go1.23.6.linux-amd64.tar.gz
+mv ~/env/golang/goroot/go ~/env/golang/goroot/go1.23.6
+# rm ~/go1.23.6.linux-amd64.tar.gz
 ```
 - Install Golang dependencies:
 ```bash
