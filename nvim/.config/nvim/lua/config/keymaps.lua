@@ -86,10 +86,10 @@ local keymap = {
 	-- ["<C-b>"] = function() neoscroll.ctrl_b({ duration = 450 }) end;
 	-- ["<C-f>"] = function() neoscroll.ctrl_f({ duration = 450 }) end;
 	["<PageUp>"] = function()
-		neoscroll.scroll(-0.1, { move_cursor = true, duration = 70 })
+		neoscroll.scroll(-0.1, { move_cursor = false, duration = 70 })
 	end,
 	["<PageDown>"] = function()
-		neoscroll.scroll(0.1, { move_cursor = true, duration = 70 })
+		neoscroll.scroll(0.1, { move_cursor = false, duration = 70 })
 	end,
 	-- ["zt"]    = function() neoscroll.zt({ half_win_duration = 250 }) end;
 	-- ["zz"]    = function() neoscroll.zz({ half_win_duration = 250 }) end;
