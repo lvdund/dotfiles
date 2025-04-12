@@ -126,6 +126,8 @@ alias grep='grep --color=auto'
 alias cls="printf '\033[2J\033[3J\033[1;1H'"
 alias gs='git status'
 alias vbash='nvim /home/vd/.bashrc'
+alias ssh-kitty='kitty +kitten ssh'
+alias ssh-vagrant-kitty='TERM=xterm-256color vagrant ssh'
 
 # golang
 GoVer=go1.23.6

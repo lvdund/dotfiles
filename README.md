@@ -72,3 +72,10 @@ go install github.com/jesseduffield/lazydocker@latest
 ```bash
 paru -S hyprland hyprpaper waybar rofi swaync pavucontrol
 ```
+
+## Zsh - debian 12
+
+```bash
+sudo apt install zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
