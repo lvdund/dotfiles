@@ -40,6 +40,10 @@ map("n", "_", [[<cmd>horizontal resize -2<cr>]])
 map("n", "ss", ":split<CR>", opts) -- up/down
 map("n", "sv", ":vsplit<CR>", opts) -- left/right
 
+-- notifycation
+map("n", "<leader>sn", ":Telescope notify<CR>", { desc = "List Notifications" })
+map("n", "<leader>nc", ":NotificationsClear", { desc = "Clear All Notifications" })
+
 -- log
 map("n", "<leader>scc", ":TodoTelescope<CR>", { desc = "List all TODO" })
 map("n", "<leader>scn", function()

@@ -1,5 +1,13 @@
 return {
 	{
+		"rcarriga/nvim-notify",
+		opts = {
+			render = "compact",
+			stages = "slide",
+			timeout = 1000,
+		},
+	},
+	{
 		"Bekaboo/dropbar.nvim",
 		-- optional, but required for fuzzy finder support
 		dependencies = {
