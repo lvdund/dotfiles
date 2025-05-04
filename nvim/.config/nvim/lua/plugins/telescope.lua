@@ -1,8 +1,28 @@
 local pickers = require("telescope.pickers")
 local finders = require("telescope.finders")
+local actions = require("telescope.actions")
 local make_entry = require("telescope.make_entry")
 local conf = require("telescope.config").values
 
+local select_one_or_multi = function(prompt_bufnr)
+	local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
+	local multi = picker:get_multi_selection()
+	if not vim.tbl_isempty(multi) then
+		require("telescope.actions").close(prompt_bufnr)
+		for _, j in pairs(multi) do
+			if j.path ~= nil then
+				vim.cmd(string.format("%s %s", "edit", j.path))
+			end
+		end
+	else
+		require("telescope.actions").select_default(prompt_bufnr)
+	end
+end
+
+-- Example 1: search "func" only in file comments.lua
+-- func  *ents.lua
+-- Example 2: search "func" only in folder plugins
+-- func  **/plugins/**
 local live_multigrep = function(opts)
 	opts = opts or {}
 	opts.cwd = opts.cwd or vim.uv.cwd()
@@ -61,7 +81,7 @@ return {
 		branch = "0.1.x",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-			{ -- If encountering errors, see telescope-fzf-native README for installation instructions
+			{
 				"nvim-telescope/telescope-fzf-native.nvim",
 				build = "make",
 				cond = function()
@@ -74,6 +94,16 @@ return {
 		config = function()
 			require("telescope").setup({
 				defaults = {
+					mappings = {
+						n = {
+							["<C-w>"] = actions.send_selected_to_qflist + actions.open_qflist,
+						},
+						i = {
+							["<CR>"] = select_one_or_multi,
+							["<C-w>"] = actions.send_selected_to_qflist + actions.open_qflist,
+							["<C-S-d>"] = actions.delete_buffer,
+						},
+					},
 					vimgrep_arguments = {
 						"rg",
 						"--hidden",
@@ -135,10 +165,13 @@ return {
 						follow = true, -- Follow symlinks
 					},
 				},
+				extensions = {
+					fzf = {},
+				},
 			})
 
 			-- Enable Telescope extensions if they are installed
-			pcall(require("telescope").load_extension, "fzf")
+			require("telescope").load_extension("fzf")
 			pcall(require("telescope").load_extension, "ui-select")
 
 			-- See `:help telescope.builtin`

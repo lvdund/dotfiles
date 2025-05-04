@@ -46,7 +46,7 @@ return { -- Useful plugin to show you pending keybinds.
 			{ "<leader>c", group = "Code" },
 			{ "<leader>e", group = "Error" },
 			{ "<leader>m", group = "Mark" },
-			{ "<leader>n", group = "MiniMap" },
+			{ "<leader>n", group = "Notifications" },
 			{ "<leader>g", group = "Git", mode = { "n", "v" } },
 			{ "<leader>s", group = "Search" },
 			{ "<leader>sc", group = "Search Todo-Comment" },

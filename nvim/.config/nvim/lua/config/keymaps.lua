@@ -41,7 +41,7 @@ map("n", "ss", ":split<CR>", opts) -- up/down
 map("n", "sv", ":vsplit<CR>", opts) -- left/right
 
 -- notifycation
-map("n", "<leader>sn", ":Telescope notify<CR>", { desc = "List Notifications" })
+map("n", "<leader>nl", ":Telescope notify<CR>", { desc = "List Notifications" })
 map("n", "<leader>nc", ":NotificationsClear", { desc = "Clear All Notifications" })
 
 -- log
@@ -73,14 +73,6 @@ map("n", "<C-n>", ":cnext<CR>", { desc = "Next search list" })
 map("n", "<C-p>", ":cprevious<CR>", { desc = "Previous search list" })
 map("n", "qc", ":cclose<CR>", { desc = "[C]lose search list" })
 map("n", "qq", ":copen<CR>", { desc = "[L]ist search list" })
-
--- mark
-local recall = require("recall")
-vim.keymap.set("n", "<leader>mm", recall.toggle, { desc = "Mark Toggle" })
-vim.keymap.set("n", "<leader>mn", recall.goto_next, { desc = "Mark Next" })
-vim.keymap.set("n", "<leader>mp", recall.goto_prev, { desc = "Mark Previous" })
-vim.keymap.set("n", "<leader>mc", recall.clear, { desc = "Mark CLear" })
-vim.keymap.set("n", "<leader>ml", ":Telescope recall<CR>", { desc = "Mark Telescope" })
 
 -- Scroll
 local neoscroll = require("neoscroll")

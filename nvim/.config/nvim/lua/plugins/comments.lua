@@ -4,10 +4,4 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = {},
 	},
-	{
-		"fnune/recall.nvim",
-		config = function()
-			require("recall").setup({})
-		end,
-	},
 }
