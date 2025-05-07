@@ -31,18 +31,6 @@ return {
 		end,
 	},
 	{
-		"devkvlt/go-tags.nvim",
-		dependencies = { "nvim-treesitter/nvim-treesitter" },
-		opts = {
-			commands = {
-				["GoTagsAddJSON"] = { "-add-tags", "json" },
-				["GoTagsRemoveJSON"] = { "-remove-tags", "json" },
-				["GoTagsAddYAML"] = { "-add-tags", "yaml" },
-				["GoTagsRemoveYAML"] = { "-remove-tags", "yaml" },
-			},
-		},
-	},
-	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
 			"Snikimonkd/cmp-go-pkgs",

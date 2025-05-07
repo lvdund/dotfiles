@@ -35,3 +35,6 @@ vim.opt.tabstop = 4
 
 -- Color-notify
 vim.opt.termguicolors = true
+
+-- disable deprecated messages
+-- vim.deprecate = function() end

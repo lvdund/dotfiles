@@ -69,10 +69,10 @@ map("n", "<leader>gs", ":TermExec cmd='git status'<CR>", { desc = "[S]tatus" })
 map("n", "\\", "<Cmd>Neotree position=float reveal<CR>")
 
 -- Quickfix
-map("n", "<C-n>", ":cnext<CR>", { desc = "Next search list" })
-map("n", "<C-p>", ":cprevious<CR>", { desc = "Previous search list" })
-map("n", "qc", ":cclose<CR>", { desc = "[C]lose search list" })
-map("n", "qq", ":copen<CR>", { desc = "[L]ist search list" })
+-- map("n", "<C-n>", ":cnext<CR>", { desc = "Next search list" })
+-- map("n", "<C-p>", ":cprevious<CR>", { desc = "Previous search list" })
+-- map("n", "qc", ":cclose<CR>", { desc = "[C]lose search list" })
+-- map("n", "qq", ":copen<CR>", { desc = "[L]ist search list" })
 
 -- Scroll
 local neoscroll = require("neoscroll")

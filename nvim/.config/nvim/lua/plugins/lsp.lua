@@ -38,6 +38,7 @@ return {
 						local symbols_map = {
 							lua = "function",
 							go = { "method", "struct", "interface", "function" },
+							java = "class",
 						}
 						local symbols = symbols_map[filetype] or "function"
 						require("telescope.builtin").lsp_document_symbols({ symbols = symbols })
@@ -109,6 +110,20 @@ return {
 								unusedparams = true,
 								unusedwrite = true,
 								useany = true,
+							},
+						},
+					},
+				},
+				jdtls = {
+					settings = {
+						java = {
+							configuration = {
+								runtimes = {
+									{
+										name = "JavaSE-21",
+										path = "/home/vd/env/java/jdk-21.0.7",
+									},
+								},
 							},
 						},
 					},
@@ -281,6 +296,7 @@ return {
 				"gomod",
 				"gowork",
 				"gosum",
+				"java",
 			},
 			auto_install = true,
 			highlight = {

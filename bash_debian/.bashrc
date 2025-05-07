@@ -142,6 +142,13 @@ else
   export GO111MODULE=auto
 fi
 
+# jdk21
+export JAVA_HOME="/home/vd/env/java/jdk-21.0.7"
+export PATH="$PATH:$JAVA_HOME/bin"
+# maven
+export M2_HOME=/home/vd/env/java/apache-maven-3.9.9
+export PATH=$M2_HOME/bin:$PATH
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
