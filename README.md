@@ -67,6 +67,13 @@ go install github.com/fatih/gomodifytags@latest
 go install github.com/jesseduffield/lazygit@latest
 go install github.com/jesseduffield/lazydocker@latest
 ```
+- Install java:
+```bash
+wget https://dlcdn.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.tar.gz
+sudo tar -xvzf apache-maven-3.9.9-bin.tar.gz -C ~/env/java
+wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.tar.gz
+sudo tar -xvzf jdk-21_linux-x64_bin.tar.gz -C ~/env/java
+```
 
 ## Hyprland
 
