@@ -1,0 +1,27 @@
+general {
+	output_format = "i3bar"
+	colors = false
+	markup = pango
+	interval = 5
+}
+
+#order += "wireless enp0s31f6"
+order += "volume master"
+order += "time"
+
+wireless enp0s31f6 {
+	format_up = "<span background='#289c93'>    %essid  </span>"
+	format_down = "<span background='#289c93'>    Disconnected  </span>"
+}
+
+volume master {
+	format = "<span background='#696ebf'>  󰕾  %volume  </span>"
+	format_muted = "<span background='#696ebf'>  󰕿  </span>  Muted  "
+	device = "default"
+	mixer = "Master"
+	mixer_idx = 0
+}
+
+time {
+	format = "<span background='#2587cc'>  󰃰  </span><span background='#bfbaac'>  %b %d at %H:%M  </span>"
+}

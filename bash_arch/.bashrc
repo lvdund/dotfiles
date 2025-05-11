@@ -17,9 +17,13 @@ alias cls="printf '\033[2J\033[3J\033[1;1H'"
 alias gs='git status'
 alias paru-clean='paru -Rns $(paru -Qtdq)'
 alias vbash='nvim /home/vd/.bashrc'
+alias ssh-kitty='kitty +kitten ssh'
+alias ssh-vagrant-kitty='TERM=xterm-256color vagrant ssh'
+alias sbash='source ~/.bashrc'
 
-# bash auto complete
-complete -cf sudo
+# Use bash-completion, if available
+[[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
+    . /usr/share/bash-completion/bash_completion
 
 # golang
 GoVer=go1.23.6
@@ -33,8 +37,11 @@ else
   export GO111MODULE=auto
 fi
 
-# nodejs
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# jdk21
+# export JAVA_HOME="/home/vd/env/java/jdk-21.0.7"
+# export PATH="$PATH:$JAVA_HOME/bin"
+# maven
+# export M2_HOME=/home/vd/env/java/apache-maven-3.9.9
+# export PATH=$M2_HOME/bin:$PATH
+
 

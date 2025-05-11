@@ -21,7 +21,7 @@
     ```
     - Arch
     ```bash
-    paru -S stow git fzf ripgrep trash-cli lazygit neovim wl-clipboard kitty tmux
+    paru -S stow git fzf ripgrep trash-cli lazygit lazydocker neovim wl-clipboard kitty tmux extension-manager xclip ibus-bamboo lsd
     ```
 
 - Clean
@@ -79,6 +79,12 @@ sudo tar -xvzf jdk-21_linux-x64_bin.tar.gz -C ~/env/java
 
 ```bash
 paru -S hyprland hyprpaper waybar rofi swaync pavucontrol
+```
+
+## i3 arch linux
+
+```bash
+paru -S i3-wm i3status dunst dmenu sonusmix ttf-firacode-nerd
 ```
 
 ## Zsh - debian 12

@@ -115,18 +115,18 @@ return {
 					},
 				},
 				jdtls = {
-					settings = {
-						java = {
-							configuration = {
-								runtimes = {
-									{
-										name = "JavaSE-21",
-										path = "/home/vd/env/java/jdk-21.0.7",
-									},
-								},
-							},
-						},
-					},
+					-- settings = {
+					-- 	java = {
+					-- 		configuration = {
+					-- 			runtimes = {
+					-- 				{
+					-- 					name = "JavaSE-21",
+					-- 					path = "/home/vd/env/java/jdk-21.0.7",
+					-- 				},
+					-- 			},
+					-- 		},
+					-- 	},
+					-- },
 				},
 				lua_ls = {
 					-- cmd = { ... },
