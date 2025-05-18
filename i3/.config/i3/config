@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:FiraCode Nerd Font 12
+font pango:FiraCode Nerd Font Bold 12
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -22,6 +22,9 @@ font pango:FiraCode Nerd Font 12
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
+
+# background
+exec_always --no-startup-id feh --bg-scale ~/.dotfiles/background/darkmoon.jpg
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -50,8 +53,9 @@ tiling_drag modifier titlebar
 
 # main apps
 bindsym $mod+t exec kitty --detach
-bindsym $mod+b exec brave
+bindsym $mod+b exec firefox
 bindsym $mod+e exec nautilus
+bindsym $mod+Shift+s exec flatpak run com.saivert.pwvucontrol
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -60,9 +64,6 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec i3-dmenu-desktop --dmenu="dmenu -i -b \
 -fn 'FiraCode Nerd Font:size=13' -nb '#141c21' -nf '#93a1a1' \
 -sb '#289c93' -sf '#141c21'"
-
-# suspend
-bindsym $mod+Control+s exec --no-startup-id systemctl suspend
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -101,6 +102,14 @@ bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
+
+# Screen Capture - Note:
+# Full Screen -> save      : mod  + P
+# Full Screen -> clipboard : ctrl + shift + P
+# Selection   -> clipboard : ctrl + mod   + P
+bindsym $mod+P exec --no-startup-id maim "/home/$USER/Pictures/$(date)"
+# bindsym Ctrl+Shift+P exec --no-startup-id maim | xclip -selection clipboard -t image/png
+bindsym Ctrl+$mod+P exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
