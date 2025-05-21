@@ -54,8 +54,8 @@ tiling_drag modifier titlebar
 # main apps
 bindsym $mod+t exec kitty --detach
 bindsym $mod+b exec firefox
-bindsym $mod+e exec nautilus
-bindsym $mod+Shift+s exec flatpak run com.saivert.pwvucontrol
+bindsym $mod+e exec thunar
+bindsym $mod+Shift+s exec pwvucontrol
 
 # kill focused window
 bindsym $mod+Shift+q kill

@@ -30,6 +30,7 @@ rm ~/.bashrc
 rm ~/.tmux.conf
 rm -rf ~/.tmux
 rm -rf ~/.config/kitty
+rm -rf ~/.config/i3
 rm -rf ~/.config/nvim
 rm -rf ~/.local/state/nvim
 rm -rf ~/.local/share/nvim
@@ -84,7 +85,7 @@ paru -S hyprland hyprpaper waybar rofi swaync pavucontrol
 ## i3 arch linux
 
 ```bash
-paru -S i3-wm i3status dunst dmenu sonusmix ttf-firacode-nerd
+paru -S i3-wm i3status dunst dmenu pwvucontrol ttf-firacode-nerd
 ```
 
 ## Zsh - debian 12
