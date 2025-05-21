@@ -95,3 +95,11 @@ local modes = { "n", "v", "x" }
 for key, func in pairs(keymap) do
 	map(modes, key, func)
 end
+
+-- golang tags
+map("n", "<leader>tajj", "<Cmd>GoAddTags json<CR>", { desc = "Add tag json" })
+map("n", "<leader>tajo", "<Cmd>GoAddTags json,omitempty<CR>", { desc = "Add tag json with omitempty" })
+map("n", "<leader>tayj", "<Cmd>GoAddTags yaml,omitempty<CR>", { desc = "Add tag yaml" })
+map("n", "<leader>tayo", "<Cmd>GoAddTags yaml,omitempty<CR>", { desc = "Add tag yaml with omitempty" })
+map("n", "<leader>trj", "<Cmd>GoRemoveTags json<CR>", { desc = "Remove tag json" })
+map("n", "<leader>try", "<Cmd>GoRemoveTags yaml<CR>", { desc = "Remove tag yaml" })
