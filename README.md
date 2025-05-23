@@ -85,7 +85,7 @@ paru -S hyprland hyprpaper waybar rofi swaync pavucontrol
 ## i3 arch linux
 
 ```bash
-paru -S i3-wm i3status dunst dmenu pwvucontrol ttf-firacode-nerd
+paru -S i3-wm i3status dunst dmenu pwvucontrol ttf-firacode-nerd feh maim
 ```
 
 ## Zsh - debian 12

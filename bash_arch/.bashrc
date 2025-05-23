@@ -15,7 +15,8 @@ export QT_IM_MODULE=ibus
 
 # alias
 alias grep='grep --color=auto'
-alias ls='lsd -la'
+alias ls='lsd'
+alias lsla='lsd -la'
 alias v='nvim'
 alias grep='grep --color=auto'
 alias cls="printf '\033[2J\033[3J\033[1;1H'"
