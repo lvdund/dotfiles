@@ -5,7 +5,7 @@ local opts = { noremap = true, silent = true }
 map("n", "<Esc>", "<cmd>nohlsearch<CR>")
 map("n", "'", ":", opts)
 map("i", "jk", "<ESC>", opts)
-map("n", "<leader>w", "<cmd>w<cr>", { desc = "Save" })
+map("n", "<leader><leader>", "<cmd>wa<cr>", { desc = "Save" })
 -- map("n", "<leader>r", "<cmd>source /home/vd/.config/nvim/init.lua<cr>", { desc = "[R]eload nvim" })
 
 -- General keymaps
