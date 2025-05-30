@@ -5,7 +5,7 @@ local opts = { noremap = true, silent = true }
 map("n", "<Esc>", "<cmd>nohlsearch<CR>")
 map("n", "'", ":", opts)
 map("i", "jk", "<ESC>", opts)
-map("n", "<leader><leader>", "<cmd>wa<cr>", { desc = "Save" })
+map("n", "<leader><leader>", "<cmd>wa<cr>", { desc = "Write" })
 -- map("n", "<leader>r", "<cmd>source /home/vd/.config/nvim/init.lua<cr>", { desc = "[R]eload nvim" })
 
 -- General keymaps
@@ -20,7 +20,6 @@ map("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
 map("n", "dw", "vb_d") -- delete a word backup
 map("n", "<C-a>", "gg<S-v>G") -- select all
-map("n", "<C-s>", ":wa<CR>", { desc = "Save file" }) -- Save file
 
 -- Move a line up or down in normal mode
 map("n", "<A-down>", ":m .+1<CR>==", { desc = "Move line down", noremap = true, silent = true })

@@ -141,11 +141,6 @@ return {
 						return 0
 					end,
 				},
-				extensions = {
-					["ui-select"] = {
-						require("telescope.themes").get_dropdown({}),
-					},
-				},
 				pickers = {
 					find_files = {
 						find_command = function()
@@ -167,12 +162,32 @@ return {
 				},
 				extensions = {
 					fzf = {},
+					["ui-select"] = {
+						require("telescope.themes").get_dropdown({}),
+					},
+					aerial = {
+						-- Set the width of the first two columns (the second
+						-- is relevant only when show_columns is set to 'both')
+						col1_width = 4,
+						col2_width = 30,
+						-- How to format the symbols
+						format_symbol = function(symbol_path, filetype)
+							if filetype == "json" or filetype == "yaml" then
+								return table.concat(symbol_path, ".")
+							else
+								return symbol_path[#symbol_path]
+							end
+						end,
+						-- Available modes: symbols, lines, both
+						show_columns = "both",
+					},
 				},
 			})
 
 			-- Enable Telescope extensions if they are installed
 			require("telescope").load_extension("fzf")
-			pcall(require("telescope").load_extension, "ui-select")
+			require("telescope").load_extension("ui-select")
+			require("telescope").extensions.aerial.aerial()
 
 			-- See `:help telescope.builtin`
 			local builtin = require("telescope.builtin")

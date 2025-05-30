@@ -32,8 +32,8 @@ alias sbash='source ~/.bashrc'
     . /usr/share/bash-completion/bash_completion
 
 # golang
-GoVer=go1.23.6
-# GoVer=go1.24.0
+# GoVer=go1.23.6
+GoVer=go1.24.3
 if [ -z "$GoVer" ]; then
   echo "GoVer is not set. No export."
 else

@@ -81,6 +81,35 @@ return {
 		event = "VeryLazy",
 	},
 	{
+		"stevearc/aerial.nvim",
+		opts = {},
+		-- Optional dependencies
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-tree/nvim-web-devicons",
+		},
+		config = function()
+			require("aerial").setup({
+				layout = {
+					width = 25,
+					default_direction = "prefer_left",
+					placement = "edge",
+				},
+				keymaps = {},
+				highlight_on_hover = true,
+				-- optionally use on_attach to set keymaps when aerial has attached to a buffer
+				on_attach = function(bufnr)
+					-- Jump forwards/backwards with '{' and '}'
+					vim.keymap.set("n", "{", "<cmd>AerialPrev<CR>", { buffer = bufnr })
+					vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
+				end,
+			})
+			-- You probably also want to set a keymap to toggle aerial
+			vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle<CR>", { desc = "Show Outline" })
+			vim.keymap.set("n", "<leader>sa", "<cmd>Telescope aerial<CR>", { desc = "[S]earch Outline" })
+		end,
+	},
+	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
@@ -107,8 +136,18 @@ return {
 				sections = {
 					lualine_a = { "mode" },
 					lualine_b = { "branch", "diff", "diagnostics" },
-					lualine_c = { "filename" },
-					lualine_x = { "filetype", "diff" },
+					lualine_c = {
+						{
+							"filename",
+							path = 1,
+							separator = vim.trim(" ⟩ "),
+							fmt = function(str)
+								return str:gsub(package.config:sub(1, 1), " ⟩ ")
+							end,
+						},
+						{ "aerial", sep = " ⟩ " },
+					},
+					lualine_x = { "filetype" },
 					lualine_y = { "datetime" },
 					lualine_z = { "location" },
 				},
