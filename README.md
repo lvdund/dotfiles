@@ -21,7 +21,7 @@
     ```
     - Arch
     ```bash
-    paru -S stow git fzf ripgrep trash-cli lazygit lazydocker neovim wl-clipboard kitty tmux extension-manager xclip ibus-bamboo lsd bash-completion maim
+    paru -S stow git fzf ripgrep trash-cli lazygit lazydocker neovim wl-clipboard kitty tmux extension-manager xclip ibus-bamboo lsd bash-completion maim clang
     ```
 
 - Clean

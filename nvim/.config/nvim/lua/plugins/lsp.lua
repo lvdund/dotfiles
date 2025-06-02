@@ -29,32 +29,53 @@ return {
 						mode = mode or "n"
 						vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 					end
+					map("grn", vim.lsp.buf.rename, "[R]e-[N]ame")
+					map("gra", vim.lsp.buf.code_action, "[G]oto Code [A]ction", { "n", "x" })
+					map("grr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
+					map("gri", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
 					map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
-					map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-					map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
-
+					map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+					-- map("gf", require("telescope.builtin").lsp_document_symbols, "[F]ind Document Symbols")
 					map("gf", function()
 						local filetype = vim.bo.filetype
 						local symbols_map = {
 							lua = "function",
-							go = { "method", "struct", "interface", "function" },
+							go = { "method", "struct", "interface", "function", "constant", "variable" },
 							java = "class",
 						}
 						local symbols = symbols_map[filetype] or "function"
 						require("telescope.builtin").lsp_document_symbols({ symbols = symbols })
 					end, "[G]oto [F]unction")
-					map("gD", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
-					-- map("gds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
-					-- map(
-					-- 	"<leader>ws",
-					-- 	require("telescope.builtin").lsp_dynamic_workspace_symbols,
-					-- 	"[W]orkspace [S]ymbols"
-					-- )
-					map("<leader>cr", vim.lsp.buf.rename, "[R]ename")
-					map("<leader>ca", vim.lsp.buf.code_action, "Code [A]ction", { "n", "x" })
-					map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+					map("gw", require("telescope.builtin").lsp_dynamic_workspace_symbols, "Open [W]orkspace Symbols")
+					map("gt", require("telescope.builtin").lsp_type_definitions, "[G]oto [T]ype Definition")
+
+					-- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
+					---@param client vim.lsp.Client
+					---@param method vim.lsp.protocol.Method
+					---@param bufnr? integer some lsp support methods only in specific files
+					---@return boolean
+					local function client_supports_method(client, method, bufnr)
+						if vim.fn.has("nvim-0.11") == 1 then
+							return client:supports_method(method, bufnr)
+						else
+							return client.supports_method(method, { bufnr = bufnr })
+						end
+					end
+
+					-- The following two autocommands are used to highlight references of the
+					-- word under your cursor when your cursor rests there for a little while.
+					--    See `:help CursorHold` for information about when this is executed
+					--
+					-- When you move your cursor, the highlights will be cleared (the second autocommand).
 					local client = vim.lsp.get_client_by_id(event.data.client_id)
-					if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
+					if
+						client
+						and client_supports_method(
+							client,
+							vim.lsp.protocol.Methods.textDocument_documentHighlight,
+							event.buf
+						)
+					then
 						local highlight_augroup =
 							vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
 						vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
@@ -77,6 +98,19 @@ return {
 							end,
 						})
 					end
+
+					-- The following code creates a keymap to toggle inlay hints in your
+					-- code, if the language server you are using supports them
+					--
+					-- This may be unwanted, since they displace some of your code
+					if
+						client
+						and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf)
+					then
+						map("grh", function()
+							vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
+						end, "[T]oggle Inlay [H]ints")
+					end
 				end,
 			})
 
@@ -93,8 +127,20 @@ return {
 			local servers = {
 				gopls = {
 					settings = {
+						filetypes = { "go", "gomod", "gowork", "gotmpl", "gosum" },
+						root_markers = { "go.mod", "go.work", ".git" },
 						gopls = {
 							gofumpt = true,
+							codelenses = {
+								gc_details = true,
+								generate = true,
+								regenerate_cgo = true,
+								run_govulncheck = true,
+								test = true,
+								tidy = true,
+								upgrade_dependency = true,
+								vendor = true,
+							},
 							hints = {
 								assignVariableTypes = true,
 								compositeLiteralFields = true,
@@ -110,28 +156,80 @@ return {
 								unusedparams = true,
 								unusedwrite = true,
 								useany = true,
+								unreachable = true,
+								modernize = true,
+								stylecheck = true,
+								appends = true,
+								asmdecl = true,
+								assign = true,
+								atomic = true,
+								bools = true,
+								buildtag = true,
+								cgocall = true,
+								composite = true,
+								contextcheck = true,
+								deba = true,
+								atomicalign = true,
+								composites = true,
+								copylocks = true,
+								deepequalerrors = true,
+								defers = true,
+								deprecated = true,
+								directive = true,
+								embed = true,
+								errorsas = true,
+								fillreturns = true,
+								framepointer = true,
+								gofix = true,
+								hostport = true,
+								infertypeargs = true,
+								lostcancel = true,
+								httpresponse = true,
+								ifaceassert = true,
+								loopclosure = true,
+								nilfunc = true,
+								nonewvars = true,
+								noresultvalues = true,
+								printf = true,
+								shadow = true,
+								shift = true,
+								sigchanyzer = true,
+								simplifycompositelit = true,
+								simplifyrange = true,
+								simplifyslice = true,
+								slog = true,
+								sortslice = true,
+								stdmethods = true,
+								stdversion = true,
+								stringintconv = true,
+								structtag = true,
+								testinggoroutine = true,
+								tests = true,
+								timeformat = true,
+								unmarshal = true,
+								unsafeptr = true,
+								unusedfunc = true,
+								unusedresult = true,
+								waitgroup = true,
+								yield = true,
+								unusedvariable = true,
 							},
+							usePlaceholders = true,
+							completeUnimported = true,
+							staticcheck = true,
+							directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+							semanticTokens = true,
 						},
 					},
-				},
-				jdtls = {
-					-- settings = {
-					-- 	java = {
-					-- 		configuration = {
-					-- 			runtimes = {
-					-- 				{
-					-- 					name = "JavaSE-21",
-					-- 					path = "/home/vd/env/java/jdk-21.0.7",
-					-- 				},
-					-- 			},
-					-- 		},
+					-- capabilities = vim.tbl_deep_extend("force", {}, vim.lsp.protocol.make_client_capabilities(), {
+					-- 	fileOperations = {
+					-- 		didRename = true,
+					-- 		willRename = true,
 					-- 	},
-					-- },
+					-- }),
 				},
+				jdtls = {},
 				lua_ls = {
-					-- cmd = { ... },
-					-- filetypes = { ... },
-					-- capabilities = {},
 					settings = {
 						Lua = {
 							completion = { callSnippet = "Replace" },
@@ -139,7 +237,20 @@ return {
 						},
 					},
 				},
-				clangd = {},
+				clangd = {
+					cmd = { "/usr/bin/clangd" },
+					filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+					root_dir = require("lspconfig").util.root_pattern(
+						".clangd",
+						".clang-tidy",
+						".clang-format",
+						"compile_commands.json",
+						"compile_flags.txt",
+						"configure.ac",
+						".git"
+					),
+					single_file_support = true,
+				},
 			}
 
 			local ensure_installed = vim.tbl_keys(servers or {})
