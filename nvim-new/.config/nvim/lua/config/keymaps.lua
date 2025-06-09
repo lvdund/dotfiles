@@ -17,7 +17,7 @@ map('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 map('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 map('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
-map('n', 'dw', 'vb_d')        -- delete a word backup
+map('n', 'dw', 'vb_d') -- delete a word backup
 map('n', '<C-a>', 'gg<S-v>G') -- select all
 
 -- Move a line up or down in normal mode
@@ -35,8 +35,9 @@ map('n', '+', [[<cmd>horizontal resize +2<cr>]])
 map('n', '_', [[<cmd>horizontal resize -2<cr>]])
 
 -- split window
-map('n', 'ss', ':split<CR>', opts)  -- up/down
+map('n', 'ss', ':split<CR>', opts) -- up/down
 map('n', 'sv', ':vsplit<CR>', opts) -- left/right
+map('n', '<leader>c', ':close<CR>', opts) -- close
 
 -- notifycation
 map('n', '<leader>nl', ':Telescope notify<CR>', { desc = 'List Notifications' })
@@ -45,10 +46,10 @@ map('n', '<leader>nc', ':NotificationsClear', { desc = 'Clear All Notifications'
 -- log
 map('n', '<leader>scc', ':TodoTelescope<CR>', { desc = 'List all TODO' })
 map('n', '<leader>scn', function()
-	require('todo-comments').jump_next()
+  require('todo-comments').jump_next()
 end, { desc = '[N]ext TODO' })
 map('n', '<leader>scp', function()
-	require('todo-comments').jump_prev()
+  require('todo-comments').jump_prev()
 end, { desc = '[P]revious TODO' })
 
 -- Diagnostic
@@ -61,9 +62,9 @@ map('n', '\\', '<Cmd>Neotree position=float reveal<CR>')
 
 -- Quickfix
 vim.keymap.set('n', '<leader>qq', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
-vim.keymap.set('n', '<leader>qn', ":cnext<CR>", { desc = "Next search list" })
-vim.keymap.set('n', '<leader>qp', ":cprevious<CR>", { desc = "Previous search list" })
-vim.keymap.set('n', '<leader>qc', ":copen<CR>", { desc = "[L]ist search list" })
+vim.keymap.set('n', '<leader>qn', ':cnext<CR>', { desc = 'Next search list' })
+vim.keymap.set('n', '<leader>qp', ':cprevious<CR>', { desc = 'Previous search list' })
+vim.keymap.set('n', '<leader>qc', ':copen<CR>', { desc = '[L]ist search list' })
 
 -- golang tags
 -- map('n', '<leader>tajj', '<Cmd>GoAddTags json<CR>', { desc = 'Add tag json' })

@@ -10,10 +10,10 @@ return {
     'akinsho/bufferline.nvim',
     event = 'VeryLazy',
     keys = {
-      { '<leader>bp', '<Cmd>BufferLineTogglePin<CR>', desc = 'Toggle Pin' },
-      { '<leader>bP', '<Cmd>BufferLineGroupClose ungrouped<CR>', desc = 'CLose Non-Pinned Buffers' },
-      { '<leader>bo', '<Cmd>BufferLineCloseOthers<CR>', desc = 'Close other Buffers' },
+      { '<leader>ba', '<Cmd>bufdo bd<CR>', desc = 'Close all Buffer' },
       { '<leader>bc', '<Cmd>bd<CR>', desc = 'Close this Buffer' },
+      { '<leader>bo', '<Cmd>BufferLineCloseOthers<CR>', desc = 'Close other Buffers' },
+      { '<leader>bp', '<Cmd>BufferLineTogglePin<CR>', desc = 'Toggle Pin' },
       { '[b', '<Cmd>BufferLineMovePrev<CR>', desc = 'Move Buffers Left' },
       { ']b', '<Cmd>BufferLineMoveNext<CR>', desc = 'Move Buffers Right' },
       { '<S-Tab>', '<cmd>BufferLineCyclePrev<cr>', desc = 'Prev Buffer' },
