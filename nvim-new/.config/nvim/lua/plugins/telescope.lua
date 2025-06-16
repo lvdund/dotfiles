@@ -1,79 +1,3 @@
-local pickers = require 'telescope.pickers'
-local finders = require 'telescope.finders'
-local actions = require 'telescope.actions'
-local make_entry = require 'telescope.make_entry'
-local conf = require('telescope.config').values
-
-local select_one_or_multi = function(prompt_bufnr)
-  local picker = require('telescope.actions.state').get_current_picker(prompt_bufnr)
-  local multi = picker:get_multi_selection()
-  if not vim.tbl_isempty(multi) then
-    require('telescope.actions').close(prompt_bufnr)
-    for _, j in pairs(multi) do
-      if j.path ~= nil then
-        vim.cmd(string.format('%s %s', 'edit', j.path))
-      end
-    end
-  else
-    require('telescope.actions').select_default(prompt_bufnr)
-  end
-end
-
--- Example 1: search "func" only in file comments.lua
--- func  *ents.lua
--- Example 2: search "func" only in folder plugins
--- func  **/plugins/**
-local live_multigrep = function(opts)
-  opts = opts or {}
-  opts.cwd = opts.cwd or vim.uv.cwd()
-
-  local finder = finders.new_async_job {
-    command_generator = function(prompt)
-      if not prompt or prompt == '' then
-        return nil
-      end
-
-      local pieces = vim.split(prompt, '  ')
-      local args = { 'rg' }
-      if pieces[1] then
-        table.insert(args, '-e')
-        table.insert(args, pieces[1])
-      end
-
-      if pieces[2] then
-        table.insert(args, '-g')
-        table.insert(args, pieces[2])
-      end
-
-      ---@diagnostic disable-next-line: deprecated
-      return vim.tbl_flatten {
-        args,
-        {
-          '--hidden',
-          '--color=never',
-          '--no-heading',
-          '--with-filename',
-          '--line-number',
-          '--column',
-          '--smart-case',
-        },
-      }
-    end,
-    entry_maker = make_entry.gen_from_vimgrep(opts),
-    cwd = opts.cwd,
-  }
-
-  pickers
-    .new(opts, {
-      debounce = 100,
-      prompt_title = 'Multi Grep',
-      finder = finder,
-      previewer = conf.grep_previewer(opts),
-      sorter = require('telescope.sorters').empty(),
-    })
-    :find()
-end
-
 return {
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
@@ -91,6 +15,82 @@ return {
       { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
     },
     config = function()
+      local pickers = require 'telescope.pickers'
+      local finders = require 'telescope.finders'
+      local actions = require 'telescope.actions'
+      local make_entry = require 'telescope.make_entry'
+      local conf = require('telescope.config').values
+
+      local select_one_or_multi = function(prompt_bufnr)
+        local picker = require('telescope.actions.state').get_current_picker(prompt_bufnr)
+        local multi = picker:get_multi_selection()
+        if not vim.tbl_isempty(multi) then
+          require('telescope.actions').close(prompt_bufnr)
+          for _, j in pairs(multi) do
+            if j.path ~= nil then
+              vim.cmd(string.format('%s %s', 'edit', j.path))
+            end
+          end
+        else
+          require('telescope.actions').select_default(prompt_bufnr)
+        end
+      end
+
+      -- Example 1: search "func" only in file comments.lua
+      -- func  *ents.lua
+      -- Example 2: search "func" only in folder plugins
+      -- func  **/plugins/**
+      local live_multigrep = function(opts)
+        opts = opts or {}
+        opts.cwd = opts.cwd or vim.uv.cwd()
+
+        local finder = finders.new_async_job {
+          command_generator = function(prompt)
+            if not prompt or prompt == '' then
+              return nil
+            end
+
+            local pieces = vim.split(prompt, '  ')
+            local args = { 'rg' }
+            if pieces[1] then
+              table.insert(args, '-e')
+              table.insert(args, pieces[1])
+            end
+
+            if pieces[2] then
+              table.insert(args, '-g')
+              table.insert(args, pieces[2])
+            end
+
+            ---@diagnostic disable-next-line: deprecated
+            return vim.tbl_flatten {
+              args,
+              {
+                '--hidden',
+                '--color=never',
+                '--no-heading',
+                '--with-filename',
+                '--line-number',
+                '--column',
+                '--smart-case',
+              },
+            }
+          end,
+          entry_maker = make_entry.gen_from_vimgrep(opts),
+          cwd = opts.cwd,
+        }
+
+        pickers
+          .new(opts, {
+            debounce = 100,
+            prompt_title = 'Multi Grep',
+            finder = finder,
+            previewer = conf.grep_previewer(opts),
+            sorter = require('telescope.sorters').empty(),
+          })
+          :find()
+      end
+
       require('telescope').setup {
         defaults = {
           mappings = {

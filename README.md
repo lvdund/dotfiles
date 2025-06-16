@@ -10,18 +10,30 @@
 - Install tmux
     - Ubuntu
     ```bash
-    sudo apt install -y stow git fzf ripgrep trash-cli tmux wl-clipboard
+    sudo apt install -y stow git fzf ripgrep trash-cli tmux wl-clipboard kitty wget curl i3 xclip rofi feh maim lsd
     ## Neovim
     curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
     sudo rm -rf /opt/nvim
     sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
-    rm nvim-linux-x86_64.tar.gz
-    ## Then add this to your shell config (~/.bashrc, ~/.zshrc, ...):
-    echo 'export PATH=$PATH:/opt/nvim-linux-x86_64/bin' >> .bashrs
     ```
     - Arch
     ```bash
     paru -S stow git fzf ripgrep trash-cli lazygit lazydocker neovim wl-clipboard kitty tmux extension-manager xclip ibus-bamboo lsd bash-completion maim clang rofi
+    ```
+- Install Ibus-Bamboo:
+    ```bash
+    echo 'deb http://download.opensuse.org/repositories/home:/lamlng/Debian_12/ /' | sudo tee /etc/apt/sources.list.d/home:lamlng.list
+    curl -fsSL https://download.opensuse.org/repositories/home:lamlng/Debian_12/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_lamlng.gpg > /dev/null
+    sudo apt update
+    sudo apt install ibus-bamboo
+    ibus restart
+    env DCONF_PROFILE=ibus dconf write /desktop/ibus/general/preload-engines "['BambooUs', 'Bamboo']" && gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us'), ('ibus', 'Bamboo')]"
+    ```
+- Install FiraCode Nerd Font:
+    ```bash
+    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FiraCode.zip
+    unzip FiraCode.zip -d FiraCode
+    sudo mv FiraCode /usr/share/fonts/opentype/
     ```
 
 - Clean
