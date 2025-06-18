@@ -10,7 +10,7 @@
 - Install tmux
     - Ubuntu
     ```bash
-    sudo apt install -y stow git fzf ripgrep trash-cli tmux wl-clipboard kitty wget curl i3 xclip rofi feh maim lsd
+    sudo apt install -y stow git fzf ripgrep trash-cli tmux wl-clipboard kitty wget curl i3 xclip rofi feh maim lsd playerctl
     ## Neovim
     curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
     sudo rm -rf /opt/nvim
@@ -64,12 +64,12 @@ source ~/.bashrc
 ```
 - Install golang
 ```bash
-mkdir -p ~/env/golang/gopath/go1.23.6/{bin,pkg,src}
+mkdir -p ~/env/golang/gopath/go1.24.4/{bin,pkg,src}
 mkdir -p ~/env/golang/goroot
-wget https://dl.google.com/go/go1.23.6.linux-amd64.tar.gz
-tar -C ~/env/golang/goroot -zxvf go1.23.6.linux-amd64.tar.gz
-mv ~/env/golang/goroot/go ~/env/golang/goroot/go1.23.6
-# rm ~/go1.23.6.linux-amd64.tar.gz
+wget https://dl.google.com/go/go1.24.4.linux-amd64.tar.gz
+tar -C ~/env/golang/goroot -zxvf go1.24.4.linux-amd64.tar.gz
+mv ~/env/golang/goroot/go ~/env/golang/goroot/go1.24.4
+# rm ~/go1.24.4.linux-amd64.tar.gz
 ```
 - Install Golang dependencies:
 ```bash
@@ -105,4 +105,29 @@ paru -S i3-wm i3status dunst dmenu pwvucontrol ttf-firacode-nerd feh maim thunar
 ```bash
 sudo apt install zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
+## Auto mount disk
+
+- check uuid
+```bash
+lsblk -o NAME,FSTYPE,UUID,MOUNTPOINT
+# or
+blkid
+```
+
+- create mount
+```bash
+# create mount folder
+sudo mkdir -p /mnt/"?????"
+
+# add auto mount
+sudo nano /etc/fstab
+# UUID=10e-b3-4e-88-ca5  /mnt/"?????"  ext4  defaults  0  0
+```
+
+- mount
+```bash
+sudo systemctl daemon-reload
+sudo mount -a
 ```

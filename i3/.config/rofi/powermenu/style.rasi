@@ -148,7 +148,7 @@ element {
     cursor:                      pointer;
 }
 element-text {
-    font:                        "feather bold 24";
+    font:                        "FiraCode Nerd Font 24";
     background-color:            transparent;
     text-color:                  inherit;
     cursor:                      inherit;
