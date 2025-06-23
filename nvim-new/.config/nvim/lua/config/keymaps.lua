@@ -23,6 +23,8 @@ map('n', '<C-a>', 'gg<S-v>G') -- select all
 -- Move a line up or down in normal mode
 map('n', '<A-down>', ':m .+1<CR>==', { desc = 'Move line down', noremap = true, silent = true })
 map('n', '<A-up>', ':m .-2<CR>==', { desc = 'Move line up', noremap = true, silent = true })
+map('n', '<A-K>', ':m .+1<CR>==', { desc = 'Move line down', noremap = true, silent = true })
+map('n', '<A-J>', ':m .-2<CR>==', { desc = 'Move line up', noremap = true, silent = true })
 
 -- Move a line or block up or down in visual mode
 map('v', '<A-down>', ":m '>+1<CR>gv=gv", { desc = 'Move selection down', noremap = true, silent = true })
@@ -37,7 +39,9 @@ map('n', '_', [[<cmd>horizontal resize -2<cr>]])
 -- split window
 map('n', 'ss', ':split<CR>', opts) -- up/down
 map('n', 'sv', ':vsplit<CR>', opts) -- left/right
-map('n', '<leader>c', ':close<CR>', opts) -- close
+
+map('n', '<leader>qq', ':close<CR>', { desc = 'Close' }) -- close
+map('n', '<leader>qa', ':qa<CR>', { desc = '[Q]uit [A]ll' }) -- close
 
 -- notifycation
 map('n', '<leader>nl', ':Telescope notify<CR>', { desc = 'List Notifications' })
@@ -56,15 +60,17 @@ end, { desc = '[P]revious TODO' })
 map('n', '<leader>ee', vim.diagnostic.open_float, { desc = 'Open Errors' })
 map('n', '<leader>en', vim.diagnostic.goto_next, { desc = '[N]ext Error' })
 map('n', '<leader>ep', vim.diagnostic.goto_prev, { desc = '[P]revious Error' })
+map('n', '<leader>eq', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 -- Neo-tree
 map('n', '\\', '<Cmd>Neotree position=float reveal<CR>')
 
 -- Quickfix
-vim.keymap.set('n', '<leader>qq', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
-vim.keymap.set('n', '<leader>qn', ':cnext<CR>', { desc = 'Next search list' })
-vim.keymap.set('n', '<leader>qp', ':cprevious<CR>', { desc = 'Previous search list' })
-vim.keymap.set('n', '<leader>qc', ':copen<CR>', { desc = '[L]ist search list' })
+map('n', 's', '', opts)
+map('n', '<C-n>', ':cnext<CR>', { desc = 'Next search list' })
+map('n', '<C-p>', ':cprevious<CR>', { desc = 'Previous search list' })
+map('n', 'sc', ':cclose<CR>', { desc = '[C]lose search list' })
+map('n', 'sq', ':copen<CR>', { desc = '[L]ist search list' })
 
 -- golang tags
 -- map('n', '<leader>tajj', '<Cmd>GoAddTags json<CR>', { desc = 'Add tag json' })

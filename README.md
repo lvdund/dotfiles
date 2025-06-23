@@ -10,7 +10,7 @@
 - Install tmux
     - Ubuntu
     ```bash
-    sudo apt install -y stow git fzf ripgrep trash-cli tmux wl-clipboard kitty wget curl i3 xclip rofi feh maim lsd playerctl
+    sudo apt install -y stow git fzf ripgrep trash-cli tmux wl-clipboard kitty wget curl i3 xclip rofi feh maim lsd playerctl baobab
     ## Neovim
     curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
     sudo rm -rf /opt/nvim
@@ -125,7 +125,7 @@ sudo mkdir -p /mnt/"?????"
 sudo nano /etc/fstab
 # UUID=10e-b3-4e-88-ca5  /mnt/"?????"  ext4  defaults  0  0
 ```
-
+a0c06ff8-d8d7-44b9-a522-83fb296cc60c
 - mount
 ```bash
 sudo systemctl daemon-reload

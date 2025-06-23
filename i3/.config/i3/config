@@ -32,7 +32,7 @@ bindsym $mod+Shift+e exec ~/.config/rofi/powermenu/powermenu.sh
 bindsym $mod+t exec kitty --detach
 bindsym $mod+b exec firefox
 bindsym $mod+e exec thunar
-bindsym $mod+Shift+s exec pavucontrol-qt
+bindsym $mod+Shift+s exec pavucontrol
 
 # kill focused window
 bindsym $mod+Shift+q kill

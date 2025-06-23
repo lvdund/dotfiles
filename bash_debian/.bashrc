@@ -131,8 +131,18 @@ alias sbash='source ~/.bashrc'
 alias ssh-kitty='kitty +kitten ssh'
 alias ssh-vagrant-kitty='TERM=xterm-256color vagrant ssh'
 
+# k8s
+source <(kubectl completion bash)
+source <(k3d completion bash)
+
 # nvim
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+
+# tmux
+alias tmuxc='tmux new -s'
+alias tmuxd='tmux kill-session -t'
+alias tmuxl='tmux ls'
+alias tmux-kill='tmux kill-server'
 
 # golang
 # GoVer=go1.23.6
@@ -156,5 +166,7 @@ fi
 
 
 # >>>> Vagrant command completion (start)
-. /opt/vagrant/embedded/gems/gems/vagrant-2.4.6/contrib/bash/completion.sh
+. /opt/vagrant/embedded/gems/gems/vagrant-2.4.7/contrib/bash/completion.sh
 # <<<<  Vagrant command completion (end)
+
+
