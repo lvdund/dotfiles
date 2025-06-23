@@ -125,9 +125,12 @@ alias lsla='lsd -la'
 alias v='nvim'
 alias grep='grep --color=auto'
 alias cls="printf '\033[2J\033[3J\033[1;1H'"
-alias gs='git status'
+
+# bash
 alias vbash='nvim /home/vd/.bashrc'
 alias sbash='source ~/.bashrc'
+
+# ssh
 alias ssh-kitty='kitty +kitten ssh'
 alias ssh-vagrant-kitty='TERM=xterm-256color vagrant ssh'
 
@@ -143,6 +146,12 @@ alias tmuxc='tmux new -s'
 alias tmuxd='tmux kill-session -t'
 alias tmuxl='tmux ls'
 alias tmux-kill='tmux kill-server'
+
+# git
+alias ga='git add'
+alias gs='git status'
+alias gcm="git commit -m"
+alias gcm-0="git commit --allow-empty-message -m ''"
 
 # golang
 # GoVer=go1.23.6
