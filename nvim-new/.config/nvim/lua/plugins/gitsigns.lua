@@ -60,6 +60,7 @@ return {
         map('n', '<leader>gD', function()
           gitsigns.diffthis '@'
         end, { desc = 'git [D]iff against last commit' })
+        map('n', '<leader>gs', ":TermExec cmd='git status'<CR>", { desc = '[S]tatus' })
 
         -- Toggles
         map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = '[T]oggle git show [b]lame line' })
