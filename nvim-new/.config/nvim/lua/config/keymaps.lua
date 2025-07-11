@@ -40,8 +40,9 @@ map('n', '_', [[<cmd>horizontal resize -2<cr>]])
 map('n', 'ss', ':split<CR>', opts) -- up/down
 map('n', 'sv', ':vsplit<CR>', opts) -- left/right
 
-map('n', '<leader>qq', ':close<CR>', { desc = 'Close' }) -- close
 map('n', '<leader>qa', ':qa<CR>', { desc = '[Q]uit [A]ll' }) -- close
+map('n', '<leader>qc', ':close<CR>', { desc = 'Close' }) -- close
+map('n', '<leader>qq', ':bp|bd#<CR>', { desc = 'Close' }) -- close buffer
 
 -- notifycation
 map('n', '<leader>nl', ':Telescope notify<CR>', { desc = 'List Notifications' })
@@ -55,6 +56,11 @@ end, { desc = '[N]ext TODO' })
 map('n', '<leader>scp', function()
   require('todo-comments').jump_prev()
 end, { desc = '[P]revious TODO' })
+
+-- lsp
+map({ 'n', 'x' }, '<leader>ca', function()
+  require('tiny-code-action').code_action()
+end, { desc = 'code action with preview' })
 
 -- Diagnostic
 map('n', '<leader>ee', vim.diagnostic.open_float, { desc = 'Open Errors' })

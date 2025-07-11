@@ -45,7 +45,7 @@ return { -- Useful plugin to show you pending keybinds.
     spec = {
       { 'gr', group = 'Lsp' },
       { '<leader>b', group = '[B]uffer' },
-      { '<leader>c', group = '[C]ursor' },
+      { '<leader>c', group = '[C]ode' },
       { '<leader>e', group = '[E]rror' },
       { '<leader>g', group = '[G]it Hunk', mode = { 'n', 'v' } },
       { 'm', group = 'Mark' },

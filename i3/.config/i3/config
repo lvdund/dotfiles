@@ -1,7 +1,7 @@
 set $mod Mod4
 font pango:FiraCode Nerd Font Bold 12
 exec --no-startup-id dex --autostart --environment i3
-exec_always --no-startup-id feh --bg-scale ~/.dotfiles/background/darkmoon.jpg
+exec_always --no-startup-id feh --bg-scale ~/.dotfiles/background/back.jpg
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 exec --no-startup-id xset s off && xset -dpms && xset s noblank
@@ -43,8 +43,8 @@ bindsym $mod+Shift+e exec ~/.config/rofi/powermenu/powermenu.sh
 
 # main apps
 bindsym $mod+t exec kitty --detach
-# bindsym $mod+b exec firefox
-# bindsym $mod+e exec thunar
+bindsym $mod+b exec firefox
+bindsym $mod+e exec thunar
 bindsym $mod+Shift+s exec pavucontrol
 
 # kill focused window
@@ -59,7 +59,7 @@ bindsym $mod+f fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+d layout tabbed
 bindsym $mod+s layout toggle split
-# bindsym Mod1+Tab focus next
+bindsym Mod1+Tab focus next
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
@@ -91,8 +91,8 @@ bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 
 # Move to cycle workspace
-# bindsym $mod+Tab workspace next
-# bindsym $mod+Shift+Tab workspace prev
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
