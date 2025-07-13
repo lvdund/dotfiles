@@ -44,8 +44,8 @@ return { -- Useful plugin to show you pending keybinds.
     -- Document existing key chains
     spec = {
       { 'gr', group = 'Lsp' },
+      { 's', group = 'Surround/Search' },
       { '<leader>b', group = '[B]uffer' },
-      { '<leader>c', group = '[C]ode' },
       { '<leader>e', group = '[E]rror' },
       { '<leader>g', group = '[G]it Hunk', mode = { 'n', 'v' } },
       { 'm', group = 'Mark' },
