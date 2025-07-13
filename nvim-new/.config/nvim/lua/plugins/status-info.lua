@@ -11,13 +11,13 @@ return {
     event = 'VeryLazy',
     keys = {
       { '<leader>ba', '<Cmd>bufdo bd<CR>', desc = 'Close all Buffer' },
-      { '<leader>bc', '<Cmd>bd<CR>', desc = 'Close this Buffer' },
+      { '<leader>bd', '<Cmd>bdelete<CR>', desc = 'Close this Buffer' },
       { '<leader>bo', '<Cmd>BufferLineCloseOthers<CR>', desc = 'Close other Buffers' },
-      { '<leader>bp', '<Cmd>BufferLineTogglePin<CR>', desc = 'Toggle Pin' },
-      { '[b', '<Cmd>BufferLineMovePrev<CR>', desc = 'Move Buffers Left' },
-      { ']b', '<Cmd>BufferLineMoveNext<CR>', desc = 'Move Buffers Right' },
-      { '<S-Tab>', '<cmd>BufferLineCyclePrev<cr>', desc = 'Prev Buffer' },
-      { '<Tab>', '<cmd>BufferLineCycleNext<cr>', desc = 'Next Buffer' },
+      -- { '<leader>bp', '<Cmd>BufferLineTogglePin<CR>', desc = 'Toggle Pin' },
+      -- { '[b', '<Cmd>BufferLineMovePrev<CR>', desc = 'Move Buffers Left' },
+      -- { ']b', '<Cmd>BufferLineMoveNext<CR>', desc = 'Move Buffers Right' },
+      { '[b', '<cmd>bprev<cr>', desc = 'Prev Buffer' },
+      { ']b', '<cmd>bnext<cr>', desc = 'Next Buffer' },
     },
     opts = {
       highlights = {

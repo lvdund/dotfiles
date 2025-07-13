@@ -12,6 +12,7 @@ map('n', '<C-left>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 map('n', '<C-right>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 map('n', '<C-down>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 map('n', '<C-up>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+map('n', '<C-\\>', '<C-w><C-w>', { desc = 'Circle focus to the all window' })
 map('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 map('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 map('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
@@ -42,7 +43,7 @@ map('n', 'sv', ':vsplit<CR>', opts) -- left/right
 
 map('n', '<leader>qa', ':qa<CR>', { desc = '[Q]uit [A]ll' }) -- close
 map('n', '<leader>qc', ':close<CR>', { desc = 'Close' }) -- close
-map('n', '<leader>qq', ':bp|bd#<CR>', { desc = 'Close' }) -- close buffer
+map('n', '<leader>qq', ':bp|bd#<CR>', { desc = 'Close but keep split window' }) -- close buffer
 
 -- notifycation
 map('n', '<leader>nl', ':Telescope notify<CR>', { desc = 'List Notifications' })
@@ -58,7 +59,7 @@ map('n', '<leader>scp', function()
 end, { desc = '[P]revious TODO' })
 
 -- lsp
-map({ 'n', 'x' }, '<leader>ca', function()
+map({ 'n', 'x' }, 'gca', function()
   require('tiny-code-action').code_action()
 end, { desc = 'code action with preview' })
 
