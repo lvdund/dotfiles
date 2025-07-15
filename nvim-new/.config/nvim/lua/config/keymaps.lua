@@ -77,7 +77,7 @@ map('n', 's', '', opts)
 map('n', '<C-n>', ':cnext<CR>', { desc = 'Next search list' })
 map('n', '<C-p>', ':cprevious<CR>', { desc = 'Previous search list' })
 map('n', 'sc', ':cclose<CR>', { desc = '[C]lose search list' })
-map('n', 'sq', ':copen<CR>', { desc = '[L]ist search list' })
+map('n', 'so', ':copen<CR>', { desc = '[O]pen search list' })
 
 -- golang tags
 -- map('n', '<leader>tajj', '<Cmd>GoAddTags json<CR>', { desc = 'Add tag json' })

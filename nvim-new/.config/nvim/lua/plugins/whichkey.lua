@@ -46,6 +46,7 @@ return { -- Useful plugin to show you pending keybinds.
       { 'gr', group = 'Lsp' },
       { 's', group = 'Surround/Search' },
       { '<leader>b', group = '[B]uffer' },
+      { '<leader>d', group = '[D]ebug' },
       { '<leader>e', group = '[E]rror' },
       { '<leader>g', group = '[G]it Hunk', mode = { 'n', 'v' } },
       { 'm', group = 'Mark' },

@@ -10,7 +10,7 @@
 - Install tmux
     - Ubuntu
     ```bash
-    sudo apt install -y stow git fzf ripgrep trash-cli tmux wl-clipboard kitty wget curl i3 xclip rofi feh maim lsd playerctl baobab
+    sudo apt install -y stow git fzf ripgrep trash-cli tmux wl-clipboard kitty wget curl i3 xclip rofi feh maim lsd playerctl baobab gparted thunar
     ## Neovim
     curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
     sudo rm -rf /opt/nvim
@@ -74,6 +74,7 @@ mv ~/env/golang/goroot/go ~/env/golang/goroot/go1.24.4
 - Install Golang dependencies:
 ```bash
 go install golang.org/x/tools/gopls@latest
+go install github.com/go-delve/delve/cmd/dlv@latest
 go install mvdan.cc/gofumpt@latest
 go install golang.org/x/tools/cmd/goimports@latest
 go install github.com/fatih/gomodifytags@latest

@@ -30,23 +30,23 @@ return {
   --     -- vim.keymap.set('n', '<Space>tm', goTest.goModTester)
   --   end,
   -- },
-  {
-    'hrsh7th/nvim-cmp',
-    dependencies = {
-      'Snikimonkd/cmp-go-pkgs',
-    },
-    config = function()
-      local cmp = require 'cmp'
-
-      cmp.setup {
-        sources = {
-          { name = 'go_pkgs' },
-        },
-        -- to use . and / in urls
-        matching = { disallow_symbol_nonprefix_matching = false },
-      }
-    end,
-  },
+  -- {
+  --   'hrsh7th/nvim-cmp',
+  --   dependencies = {
+  --     'Snikimonkd/cmp-go-pkgs',
+  --   },
+  --   config = function()
+  --     local cmp = require 'cmp'
+  --
+  --     cmp.setup {
+  --       sources = {
+  --         { name = 'go_pkgs' },
+  --       },
+  --       -- to use . and / in urls
+  --       matching = { disallow_symbol_nonprefix_matching = false },
+  --     }
+  --   end,
+  -- },
   {
     'zgs225/gomodifytags.nvim',
     cmd = { 'GoAddTags', 'GoRemoveTags', 'GoInstallModifyTagsBin' },

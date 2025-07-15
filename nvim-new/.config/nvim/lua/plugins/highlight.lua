@@ -75,29 +75,29 @@ return {
       }
     end,
   },
-  {
-    'xzbdmw/colorful-menu.nvim',
-    config = function()
-      require('colorful-menu').setup {
-        ls = {
-          lua_ls = {
-            arguments_hl = '@comment',
-          },
-          gopls = {
-            align_type_to_right = true,
-            add_colon_before_type = false,
-            preserve_type_when_truncate = true,
-          },
-          fallback = true,
-        },
-        fallback_highlight = '@variable',
-        max_width = 60,
-      }
-    end,
-  },
-  {
-    'catgoose/nvim-colorizer.lua',
-    event = 'BufReadPre',
-    opts = {},
-  },
+  -- {
+  --   'xzbdmw/colorful-menu.nvim',
+  --   config = function()
+  --     require('colorful-menu').setup {
+  --       ls = {
+  --         lua_ls = {
+  --           arguments_hl = '@comment',
+  --         },
+  --         gopls = {
+  --           align_type_to_right = true,
+  --           add_colon_before_type = false,
+  --           preserve_type_when_truncate = true,
+  --         },
+  --         fallback = true,
+  --       },
+  --       fallback_highlight = '@variable',
+  --       max_width = 60,
+  --     }
+  --   end,
+  -- },
+  -- {
+  --   'catgoose/nvim-colorizer.lua',
+  --   event = 'BufReadPre',
+  --   opts = {},
+  -- },
 }
