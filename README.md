@@ -10,7 +10,8 @@
 - Install tmux
     - Ubuntu
     ```bash
-    sudo apt install -y stow git fzf ripgrep trash-cli tmux wl-clipboard kitty wget curl i3 xclip rofi feh maim lsd playerctl baobab gparted thunar
+    sudo apt install -y xorg i3 i3status i3lock xinit lightdm
+    sudo apt install -y stow git fzf ripgrep trash-cli tmux wl-clipboard kitty wget curl i3 xclip rofi feh maim lsd playerctl baobab gparted thunar xarchiver gvfs pavucontrol
     ## Neovim
     curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
     sudo rm -rf /opt/nvim
