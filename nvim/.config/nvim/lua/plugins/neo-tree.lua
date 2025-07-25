@@ -11,8 +11,9 @@ return {
   },
   lazy = false,
   keys = {
-    { '\\', '<Cmd>Neotree position=float reveal<CR>', desc = 'NeoTree', silent = true },
-    { '<leader>\\', '<Cmd>Neotree position=left reveal<CR>', desc = 'NeoTree', silent = true },
+    { '<leader>nf', '<Cmd>Neotree position=float reveal<CR>', desc = '[N]eoTree [F]loat', silent = true },
+    { '<leader>nl', '<Cmd>Neotree position=left reveal<CR>', desc = '[N]eoTree [L]eft', silent = true },
+    { '\\', '<Cmd>Neotree toggle<CR>', desc = 'Neotree toggle', silent = true },
   },
   opts = {
     default_component_configs = {
@@ -22,10 +23,10 @@ return {
       git_status = {
         symbols = {
           -- Change type
-          added = '✚', -- or "✚", but this is redundant info if you use git_status_colors on the name
-          modified = '', -- or "", but this is redundant info if you use git_status_colors on the name
-          deleted = '✖', -- this can only be used in the git_status source
-          renamed = '󰁕', -- this can only be used in the git_status source
+          added = '✚',
+          modified = '',
+          deleted = '✖',
+          renamed = '󰁕',
           -- Status type
           untracked = '',
           ignored = ' ',
@@ -36,14 +37,14 @@ return {
       },
     },
     source_selector = {
-      statusline = false,
+      lualine = false,
     },
     filesystem = {
-      window = {
-        mappings = {
-          ['\\'] = 'close_window',
-        },
-      },
+      -- window = {
+      --   mappings = {
+      --     ['\\'] = 'close_window',
+      --   },
+      -- },
       filtered_items = {
         visible = true, -- when true, they will just be displayed differently than normal items
         hide_dotfiles = false,

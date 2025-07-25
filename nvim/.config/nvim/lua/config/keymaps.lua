@@ -46,8 +46,8 @@ map('n', '<leader>qc', ':close<CR>', { desc = 'Close' }) -- close
 map('n', '<leader>qq', ':bp|bd#<CR>', { desc = 'Close but keep split window' }) -- close buffer
 
 -- notifycation
-map('n', '<leader>nl', ':Telescope notify<CR>', { desc = 'List Notifications' })
-map('n', '<leader>nc', ':NotificationsClear', { desc = 'Clear All Notifications' })
+map('n', '<leader>snn', ':Telescope notify<CR>', { desc = 'List Notifications' })
+map('n', '<leader>snc', ':NotificationsClear', { desc = 'Clear All Notifications' })
 
 -- log
 map('n', '<leader>scc', ':TodoTelescope<CR>', { desc = 'List all TODO' })
