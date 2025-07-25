@@ -1,148 +1,106 @@
 return {
-  'mfussenegger/nvim-dap',
-  dependencies = {
-    'rcarriga/nvim-dap-ui',
-    'nvim-neotest/nvim-nio',
-
-    -- Installs the debug adapters for you
-    'mason-org/mason.nvim',
-    'jay-babu/mason-nvim-dap.nvim',
-
-    'leoluz/nvim-dap-go',
+  {
+    'andythigpen/nvim-coverage',
+    dependencies = 'nvim-lua/plenary.nvim',
+    cmd = {
+      'Coverage',
+      'CoverageSummary',
+      'CoverageLoad',
+      'CoverageShow',
+      'CoverageHide',
+      'CoverageToggle',
+      'CoverageClear',
+    },
+    config = function()
+      require('coverage').setup()
+    end,
   },
-  keys = {
-    -- Basic debugging keymaps, feel free to change to your liking!
-    {
-      '<F5>',
-      function()
-        require('dap').continue()
-      end,
-      desc = 'Debug: Start/Continue',
+  {
+    'nvim-neotest/neotest',
+    dependencies = {
+      'nvim-neotest/nvim-nio',
+      'nvim-lua/plenary.nvim',
+      'antoinemadec/FixCursorHold.nvim',
+      'nvim-treesitter/nvim-treesitter',
+      'fredrikaverpil/neotest-golang',
     },
-    {
-      '<F1>',
-      function()
-        require('dap').step_into()
-      end,
-      desc = 'Debug: Step Into',
+    keys = {
+      { '<leader>da', "<cmd>lua require('neotest').run.attach()<cr>", desc = 'Attach to the nearest test' },
+      { '<leader>dl', "<cmd>lua require('neotest').run.run_last()<cr>", desc = 'Toggle Test Summary' },
+      { '<leader>do', "<cmd>lua require('neotest').output_panel.toggle()<cr>", desc = 'Toggle Test Output Panel' },
+      { '<leader>dp', "<cmd>lua require('neotest').run.stop()<cr>", desc = 'Stop the nearest test' },
+      { '<leader>ds', "<cmd>lua require('neotest').summary.toggle()<cr>", desc = 'Toggle Test Summary' },
+      { '<leader>dt', "<cmd>lua require('neotest').run.run()<cr>", desc = 'Run the nearest test' },
+      {
+        '<leader>dT',
+        "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>",
+        desc = 'Run test the current file',
+      },
+      {
+        '<leader>td',
+        function()
+          require('neotest').run.run { suite = false, strategy = 'dap' }
+        end,
+        desc = 'Debug nearest test',
+      },
     },
-    {
-      '<F2>',
-      function()
-        require('dap').step_over()
-      end,
-      desc = 'Debug: Step Over',
-    },
-    {
-      '<F3>',
-      function()
-        require('dap').step_out()
-      end,
-      desc = 'Debug: Step Out',
-    },
-    {
-      '<leader>db',
-      function()
-        require('dap').toggle_breakpoint()
-      end,
-      desc = 'Debug: Toggle Breakpoint',
-    },
-    {
-      '<leader>dB',
-      function()
-        require('dap').set_breakpoint(vim.fn.input 'Breakpoint condition: ')
-      end,
-      desc = 'Debug: Set Breakpoint',
-    },
-    {
-      '<F7>',
-      function()
-        require('dapui').toggle()
-      end,
-      desc = 'Debug: See last session result.',
-    },
-    {
-      '<leader>dgt',
-      function()
-        require('dap-go').debug_test()
-      end,
-      desc = 'Debug: Go [T]est',
-    },
-    {
-      '<leader>dgl',
-      function()
-        require('dap-go').debug_last_test()
-      end,
-      desc = 'Debug: Go Test [L]ast',
-    },
-  },
-  config = function()
-    local dap = require 'dap'
-    local dapui = require 'dapui'
-
-    require('mason-nvim-dap').setup {
-      automatic_installation = true,
-      handlers = {},
-      ensure_installed = { 'delve' },
-    }
-
-    dapui.setup {
-      -- icons = { expanded = '▾', collapsed = '▸', current_frame = '*' },
-      -- controls = {
-      --   icons = {
-      --     pause = '⏸',
-      --     play = '▶',
-      --     step_into = '⏎',
-      --     step_over = '⏭',
-      --     step_out = '⏮',
-      --     step_back = 'b',
-      --     run_last = '▶▶',
-      --     terminate = '⏹',
-      --     disconnect = '⏏',
-      --   },
-      -- },
-    }
-
-    -- Change breakpoint icons
-    -- vim.api.nvim_set_hl(0, 'DapBreak', { fg = '#e51400' })
-    -- vim.api.nvim_set_hl(0, 'DapStop', { fg = '#ffcc00' })
-    -- local breakpoint_icons = vim.g.have_nerd_font
-    --     and { Breakpoint = '', BreakpointCondition = '', BreakpointRejected = '', LogPoint = '', Stopped = '' }
-    --   or { Breakpoint = '●', BreakpointCondition = '⊜', BreakpointRejected = '⊘', LogPoint = '◆', Stopped = '⭔' }
-    -- for type, icon in pairs(breakpoint_icons) do
-    --   local tp = 'Dap' .. type
-    --   local hl = (type == 'Stopped') and 'DapStop' or 'DapBreak'
-    --   vim.fn.sign_define(tp, { text = icon, texthl = hl, numhl = hl })
-    -- end
-
-    dap.listeners.after.event_initialized['dapui_config'] = dapui.open
-    dap.listeners.before.event_terminated['dapui_config'] = dapui.close
-    dap.listeners.before.event_exited['dapui_config'] = dapui.close
-
-    -- Install golang specific config
-    require('dap-go').setup {
-      dap_configurations = {
-        {
-          -- Must be "go" or it will be ignored by the plugin
-          type = 'go',
-          name = 'Attach remote',
-          mode = 'remote',
-          request = 'attach',
+    config = function()
+      require('neotest').setup {
+        adapters = {
+          require 'neotest-golang'(function()
+            local neotest_golang_opts = {} -- Specify custom configuration
+            require('neotest').setup {
+              adapters = {
+                require 'neotest-golang'(neotest_golang_opts), -- Registration
+              },
+            }
+          end), -- Apply configuration
         },
-      },
-      -- delve configurations
-      delve = {
-        path = 'dlv',
-        initialize_timeout_sec = 20,
-        port = '${port}',
-        args = {},
-        build_flags = {},
-        detached = vim.fn.has 'win32' == 0,
-        cwd = nil,
-      },
-      tests = {
-        verbose = false,
-      },
-    }
-  end,
+        diagnostic = {
+          enabled = false,
+        },
+        floating = {
+          border = 'rounded',
+          max_height = 0.6,
+          max_width = 0.6,
+        },
+        highlights = {
+          adapter_name = 'NeotestAdapterName',
+          border = 'NeotestBorder',
+          dir = 'NeotestDir',
+          expand_marker = 'NeotestExpandMarker',
+          failed = 'NeotestFailed',
+          file = 'NeotestFile',
+          focused = 'NeotestFocused',
+          indent = 'NeotestIndent',
+          namespace = 'NeotestNamespace',
+          passed = 'NeotestPassed',
+          running = 'NeotestRunning',
+          skipped = 'NeotestSkipped',
+          test = 'NeotestTest',
+        },
+        output = {
+          enabled = true,
+          open_on_run = true,
+        },
+        run = {
+          enabled = true,
+        },
+        status = {
+          enabled = true,
+        },
+        strategies = {
+          integrated = {
+            height = 40,
+            width = 120,
+          },
+        },
+        summary = {
+          enabled = true,
+          expand_errors = true,
+          follow = true,
+        },
+      }
+    end,
+  },
 }

@@ -43,7 +43,7 @@ bindsym $mod+Shift+e exec ~/.config/rofi/powermenu/powermenu.sh
 
 # main apps
 bindsym $mod+t exec kitty --detach
-bindsym $mod+b exec firefox
+bindsym $mod+b exec brave-browser
 bindsym $mod+e exec thunar
 bindsym $mod+Shift+s exec pavucontrol
 

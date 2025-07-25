@@ -11,7 +11,7 @@
     - Ubuntu
     ```bash
     sudo apt install -y xorg i3 i3status i3lock xinit lightdm
-    sudo apt install -y stow git fzf ripgrep trash-cli tmux wl-clipboard kitty wget curl i3 xclip rofi feh maim lsd playerctl baobab gparted thunar xarchiver gvfs pavucontrol
+    sudo apt install -y stow git fzf ripgrep trash-cli tmux wl-clipboard kitty wget curl i3 xclip rofi feh maim lsd playerctl baobab gparted thunar xarchiver gvfs pavucontrol gcc g++ linux-headers-amd64
     ## Neovim
     curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
     sudo rm -rf /opt/nvim
@@ -30,11 +30,13 @@
     ibus restart
     env DCONF_PROFILE=ibus dconf write /desktop/ibus/general/preload-engines "['BambooUs', 'Bamboo']" && gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us'), ('ibus', 'Bamboo')]"
     ```
-- Install FiraCode Nerd Font:
+- Install Font:
     ```bash
     wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FiraCode.zip
     unzip FiraCode.zip -d FiraCode
     sudo mv FiraCode /usr/share/fonts/opentype/
+
+    sudo apt install fonts-dejavu fonts-liberation fonts-noto fonts-noto-core fonts-freefont-ttf fonts-font-awesome fonts-noto-color-emoji
     ```
 
 - Clean
@@ -51,7 +53,12 @@ rm -rf ~/.cache/nvim
 ```
 
 ## Run
-
+- browser librewoft
+```bash
+sudo apt update && sudo apt install extrepo -y
+sudo extrepo enable librewolf
+sudo apt update && sudo apt install librewolf -y
+```
 - Run with ```stow```
 ```bash
 git clone https://github.com/lvdund/dotfiles.git ~/.dotfiles
@@ -77,10 +84,12 @@ mv ~/env/golang/goroot/go ~/env/golang/goroot/go1.24.4
 go install golang.org/x/tools/gopls@latest
 go install github.com/go-delve/delve/cmd/dlv@latest
 go install mvdan.cc/gofumpt@latest
+go install mvdan.cc/sh/v3/cmd/shfmt@latest
 go install golang.org/x/tools/cmd/goimports@latest
 go install github.com/fatih/gomodifytags@latest
 go install github.com/jesseduffield/lazygit@latest
 go install github.com/jesseduffield/lazydocker@latest
+go install github.com/josharian/impl@latest
 ```
 - Install java:
 ```bash
@@ -89,7 +98,11 @@ sudo tar -xvzf apache-maven-3.9.9-bin.tar.gz -C ~/env/java
 wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.tar.gz
 sudo tar -xvzf jdk-21_linux-x64_bin.tar.gz -C ~/env/java
 ```
+- Install bash lsp:
+```bash
+npm i -g bash-language-server
 
+```
 ## Hyprland
 
 ```bash

@@ -11,13 +11,13 @@ return {
     event = 'VeryLazy',
     keys = {
       { '<leader>ba', '<Cmd>bufdo bd<CR>', desc = 'Close all Buffer' },
-      { '<leader>bd', '<Cmd>bdelete<CR>', desc = 'Close this Buffer' },
+      { '<leader>bc', '<Cmd>bdelete<CR>', desc = 'Close this Buffer' },
       { '<leader>bo', '<Cmd>BufferLineCloseOthers<CR>', desc = 'Close other Buffers' },
       -- { '<leader>bp', '<Cmd>BufferLineTogglePin<CR>', desc = 'Toggle Pin' },
       { '[B', '<Cmd>BufferLineMovePrev<CR>', desc = 'Move Buffers Left' },
       { ']B', '<Cmd>BufferLineMoveNext<CR>', desc = 'Move Buffers Right' },
-      { '[b', '<cmd>bprev<cr>', desc = 'Prev Buffer' },
-      { ']b', '<cmd>bnext<cr>', desc = 'Next Buffer' },
+      { '<S-Tab>', '<cmd>bprev<cr>', desc = 'Prev Buffer' },
+      { '<Tab>', '<cmd>bnext<cr>', desc = 'Next Buffer' },
     },
     opts = {
       highlights = {
@@ -127,15 +127,24 @@ return {
           lualine_b = { 'branch', 'diff', 'diagnostics' },
           lualine_c = {
             {
-              'filename',
-              path = 1,
-              separator = vim.trim ' ⟩ ',
-              fmt = function(str)
-                return str:gsub(package.config:sub(1, 1), '/')
+              function()
+                local reg = vim.fn.reg_recording()
+                if reg == '' then
+                  return ''
+                end -- not recording
+                return 'record: ' .. reg
               end,
             },
+            -- {
+            --   'filename',
+            --   path = 1,
+            --   separator = vim.trim ' ⟩ ',
+            --   fmt = function(str)
+            --     return str:gsub(package.config:sub(1, 1), '/')
+            --   end,
+            -- },
           },
-          lualine_x = { 'filetype' },
+          lualine_x = { 'filename' },
           lualine_y = { 'datetime' },
           lualine_z = { 'location' },
         },

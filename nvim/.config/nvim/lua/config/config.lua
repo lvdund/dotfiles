@@ -4,9 +4,9 @@ vim.g.have_nerd_font = true
 vim.o.number = true
 vim.opt.relativenumber = true
 vim.o.mouse = 'a'
-vim.o.showmode = false
+vim.o.showmode = true
 vim.schedule(function()
-	vim.o.clipboard = 'unnamedplus'
+  vim.o.clipboard = 'unnamedplus'
 end)
 vim.o.breakindent = true
 vim.o.undofile = true

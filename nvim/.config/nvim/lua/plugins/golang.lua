@@ -12,24 +12,19 @@ return {
       highlight = 'Goplements',
     },
   },
-  -- {
-  --   'cademichael/gotest.nvim',
-  --   dependencies = {
-  --     'nvim-treesitter/nvim-treesitter',
-  --     'nvim-telescope/telescope.nvim',
-  --   },
-  --   config = function()
-  --     -- defaults
-  --     vim.g.gotest = {
-  --       test_cmd = 'go test -run ',
-  --       preview_cutoff = 0,
-  --       preview_width = 0.67,
-  --     }
-  --     local goTest = require 'gotest'
-  --     vim.keymap.set('n', '<Space>tf', goTest.goFuncTester)
-  --     -- vim.keymap.set('n', '<Space>tm', goTest.goModTester)
-  --   end,
-  -- },
+  {
+    'edolphin-ydf/goimpl.nvim',
+    dependencies = { 'nvim-telescope/telescope.nvim' },
+    init = function()
+      vim.keymap.set('n', '<leader>im', function()
+        require('telescope').extensions.goimpl.goimpl()
+      end, { desc = '' })
+    end,
+    config = function()
+      require('telescope').load_extension 'goimpl'
+    end,
+    ft = 'go',
+  },
   -- {
   --   'hrsh7th/nvim-cmp',
   --   dependencies = {

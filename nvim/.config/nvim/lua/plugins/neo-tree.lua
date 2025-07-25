@@ -11,9 +11,33 @@ return {
   },
   lazy = false,
   keys = {
-    { '\\', '<Cmd>Neotree position=float reveal<CR>', desc = 'NeoTree reveal', silent = true },
+    { '\\', '<Cmd>Neotree position=float reveal<CR>', desc = 'NeoTree', silent = true },
+    { '<leader>\\', '<Cmd>Neotree position=left reveal<CR>', desc = 'NeoTree', silent = true },
   },
   opts = {
+    default_component_configs = {
+      container = {
+        enable_character_fade = true,
+      },
+      git_status = {
+        symbols = {
+          -- Change type
+          added = '✚', -- or "✚", but this is redundant info if you use git_status_colors on the name
+          modified = '', -- or "", but this is redundant info if you use git_status_colors on the name
+          deleted = '✖', -- this can only be used in the git_status source
+          renamed = '󰁕', -- this can only be used in the git_status source
+          -- Status type
+          untracked = '',
+          ignored = ' ',
+          unstaged = '✗',
+          staged = ' ',
+          conflict = '',
+        },
+      },
+    },
+    source_selector = {
+      statusline = false,
+    },
     filesystem = {
       window = {
         mappings = {

@@ -131,10 +131,6 @@ alias sbash='source ~/.bashrc'
 alias ssh-kitty='kitty +kitten ssh'
 alias ssh-vagrant-kitty='TERM=xterm-256color vagrant ssh'
 
-# k8s
-source <(kubectl completion bash)
-source <(k3d completion bash)
-
 # nvim
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 
@@ -151,6 +147,9 @@ alias ga='git add'
 alias gs='git status'
 alias gcm="git commit -m"
 alias gcm-0="git commit --allow-empty-message -m ''"
+
+# python
+alias pyenv='source ~/env/pyenv/main/bin/activate'
 
 # golang
 # GoVer=go1.23.6
@@ -170,10 +169,6 @@ fi
 # # maven
 # export M2_HOME=/home/vd/env/java/apache-maven-3.9.9
 # export PATH=$M2_HOME/bin:$PATH
-
-# >>>> Vagrant command completion (start)
-. /opt/vagrant/embedded/gems/gems/vagrant-2.4.7/contrib/bash/completion.sh
-# <<<<  Vagrant command completion (end)
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
