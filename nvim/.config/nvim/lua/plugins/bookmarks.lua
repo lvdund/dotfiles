@@ -6,10 +6,10 @@ return {
       sign_priority = 8, --set bookmark sign priority to cover other sign
       save_file = vim.fn.expand '$HOME/.cache/bookmarks', -- bookmarks save file path
       keywords = {
-        ['@t'] = ' ', -- mark annotation startswith @t ,signs this icon as `Todo`
-        ['@w'] = ' ', -- mark annotation startswith @w ,signs this icon as `Warn`
-        ['@e'] = ' ', -- mark annotation startswith @e ,signs this icon as `Error`
-        ['@n'] = '󰎛 ', -- mark annotation startswith @n ,signs this icon as `Note`
+        ['@t'] = '☑️', -- mark annotation startswith @t ,signs this icon as `Todo`
+        ['@w'] = '⚠️', -- mark annotation startswith @w ,signs this icon as `Warn`
+        ['@e'] = '🐞', -- mark annotation startswith @e ,signs this icon as `Error`
+        ['@n'] = '📝', -- mark annotation startswith @n ,signs this icon as `Note`
       },
       on_attach = function(bufnr)
         local bm = require 'bookmarks'

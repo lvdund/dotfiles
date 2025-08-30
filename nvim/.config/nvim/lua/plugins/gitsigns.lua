@@ -85,6 +85,10 @@ return {
         end, { desc = '[G]it show [C]ommit inline' })
         map('n', '<leader>gs', ":TermExec cmd='git status'<CR>", { desc = '[G]it [S]tatus' })
 
+        -- Navigate
+        map('n', ']g', ':Gitsigns nav_hunk next<CR>', { desc = 'Git next hunk' })
+        map('n', '[g', ':Gitsigns nav_hunk prev<CR>', { desc = 'Git prev hunk' })
+
         -- Toggles
         map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = '[T]oggle [C]ommit inline' })
         map('n', '<leader>tw', gitsigns.toggle_word_diff, { desc = '[T]oggle different [W]ord' })

@@ -11,9 +11,10 @@ return {
   },
   lazy = false,
   keys = {
-    { '<leader>nf', '<Cmd>Neotree position=float reveal<CR>', desc = '[N]eoTree [F]loat', silent = true },
-    { '<leader>nl', '<Cmd>Neotree position=left reveal<CR>', desc = '[N]eoTree [L]eft', silent = true },
-    { '\\', '<Cmd>Neotree toggle<CR>', desc = 'Neotree toggle', silent = true },
+    -- { '<leader>nf', '<Cmd>Neotree position=float reveal<CR>', desc = '[N]eoTree [F]loat', silent = true },
+    -- { '<leader>nl', '<Cmd>Neotree position=left reveal<CR>', desc = '[N]eoTree [L]eft', silent = true },
+    -- { '\\', '<Cmd>Neotree toggle<CR>', desc = 'Neotree toggle', silent = true },
+    { '\\', '<Cmd>Neotree position=float reveal<CR>', desc = 'Neotree toggle', silent = true },
   },
   opts = {
     default_component_configs = {
@@ -40,11 +41,11 @@ return {
       lualine = false,
     },
     filesystem = {
-      -- window = {
-      --   mappings = {
-      --     ['\\'] = 'close_window',
-      --   },
-      -- },
+      window = {
+        mappings = {
+          ['\\'] = 'close_window',
+        },
+      },
       filtered_items = {
         visible = true, -- when true, they will just be displayed differently than normal items
         hide_dotfiles = false,

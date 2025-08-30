@@ -144,8 +144,10 @@ return {
             --   end,
             -- },
           },
-          lualine_x = { 'filename' },
-          lualine_y = { 'datetime' },
+          -- lualine_x = { 'filename' },
+          -- lualine_y = { 'datetime' },
+          lualine_x = {},
+          lualine_y = {},
           lualine_z = { 'location' },
         },
         inactive_sections = {

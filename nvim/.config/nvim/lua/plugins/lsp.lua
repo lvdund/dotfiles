@@ -128,6 +128,23 @@ return {
           ),
           single_file_support = true,
         },
+        rust_analyzer = {
+          settings = {
+            ['rust-analyzer'] = {
+              cargo = { loadOutDirsFromCheck = true, allFeatures = true },
+              checkOnSave = { command = 'clippy' },
+              assist = { importGranularity = 'module', importPrefix = 'self' },
+              diagnostics = { enable = true, enableExperimental = true },
+              inlayHints = {
+                locationLinks = false,
+                chainingHints = true,
+                parameterHints = true,
+                typeHints = true,
+              },
+              procMacro = { enable = true },
+            },
+          },
+        },
         gopls = {
           settings = {
             filetypes = { 'go', 'gomod', 'gowork', 'gotmpl', 'gosum' },

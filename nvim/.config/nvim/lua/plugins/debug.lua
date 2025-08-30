@@ -25,24 +25,25 @@ return {
       'fredrikaverpil/neotest-golang',
     },
     keys = {
-      { '<leader>da', "<cmd>lua require('neotest').run.attach()<cr>", desc = 'Attach to the nearest test' },
-      { '<leader>dl', "<cmd>lua require('neotest').run.run_last()<cr>", desc = 'Toggle Test Summary' },
-      { '<leader>do', "<cmd>lua require('neotest').output_panel.toggle()<cr>", desc = 'Toggle Test Output Panel' },
-      { '<leader>dp', "<cmd>lua require('neotest').run.stop()<cr>", desc = 'Stop the nearest test' },
-      { '<leader>ds', "<cmd>lua require('neotest').summary.toggle()<cr>", desc = 'Toggle Test Summary' },
-      { '<leader>dt', "<cmd>lua require('neotest').run.run()<cr>", desc = 'Run the nearest test' },
-      {
-        '<leader>dT',
-        "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>",
-        desc = 'Run test the current file',
-      },
-      {
-        '<leader>td',
-        function()
-          require('neotest').run.run { suite = false, strategy = 'dap' }
-        end,
-        desc = 'Debug nearest test',
-      },
+      -- { '<leader>da', "<cmd>lua require('neotest').run.attach()<cr>", desc = 'Attach to the nearest test' },
+      -- { '<leader>dl', "<cmd>lua require('neotest').run.run_last()<cr>", desc = 'Toggle Test Summary' },
+      -- { '<leader>do', "<cmd>lua require('neotest').output_panel.toggle()<cr>", desc = 'Toggle Test Output Panel' },
+      { '<leader>do', ':Neotest output<cr>', desc = 'Output Panel' },
+      { '<leader>dp', "<cmd>lua require('neotest').run.stop()<cr>", desc = 'Stop test' },
+      { '<leader>ds', "<cmd>lua require('neotest').summary.toggle()<cr>", desc = 'Toggle Summary' },
+      { '<leader>dt', "<cmd>lua require('neotest').run.run()<cr>", desc = 'Run test' },
+      -- {
+      --   '<leader>dT',
+      --   "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>",
+      --   desc = 'Run test the current file',
+      -- },
+      -- {
+      --   '<leader>td',
+      --   function()
+      --     require('neotest').run.run { suite = false, strategy = 'dap' }
+      --   end,
+      --   desc = 'Debug nearest test',
+      -- },
     },
     config = function()
       require('neotest').setup {

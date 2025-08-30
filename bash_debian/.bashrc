@@ -126,6 +126,7 @@ alias cls="printf '\033[2J\033[3J\033[1;1H'"
 # bash
 alias vbash='nvim /home/vd/.bashrc'
 alias sbash='source ~/.bashrc'
+alias spython='source ~/env/pyenv/main/bin/activate'
 
 # ssh
 alias ssh-kitty='kitty +kitten ssh'
@@ -170,6 +171,8 @@ fi
 # export M2_HOME=/home/vd/env/java/apache-maven-3.9.9
 # export PATH=$M2_HOME/bin:$PATH
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+. "$HOME/.cargo/env"
+
+# >>>> Vagrant command completion (start)
+. /opt/vagrant/embedded/gems/gems/vagrant-2.4.8/contrib/bash/completion.sh
+# <<<<  Vagrant command completion (end)
