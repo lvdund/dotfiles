@@ -35,7 +35,7 @@ sudo apt install -y xorg i3 i3status i3lock xinit lightdm
 
 # Development and utility packages
 sudo apt install -y stow git fzf ripgrep trash-cli tmux wl-clipboard kitty fish \
-    wget curl i3 xclip rofi feh maim lsd playerctl baobab gparted thunar \
+    wget curl xclip rofi feh maim lsd playerctl gparted thunar \
     xarchiver gvfs pavucontrol gcc g++ linux-headers-amd64 lxappearance
 
 # Install Neovim (latest version)
