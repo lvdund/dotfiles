@@ -15,6 +15,7 @@ set -x PATH $PATH /opt/nvim-linux-x86_64/bin
 
 # ====================== Aliases (functions) ======================
 abbr -a sfish 'source ~/.config/fish/config.fish'
+abbr -a vfish 'nvim ~/.config/fish/config.fish'
 function ls
     command lsd $argv
 end 
@@ -31,7 +32,7 @@ function grep
     command grep --color=auto $argv
 end
 
-abbr -a spython '~/env/pyenv/main/bin/activate.fish'
+abbr -a spython 'source ~/env/pyenv/main/bin/activate.fish'
 
 # git
 function ga

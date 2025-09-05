@@ -32,10 +32,10 @@ bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+# bindsym $mod+Shift+Left move left
+# bindsym $mod+Shift+Down move down
+# bindsym $mod+Shift+Up move up
+# bindsym $mod+Shift+Right move right
 
 # Rofi
 bindsym $mod+a exec ~/.config/rofi/launchers/launcher.sh 
@@ -43,7 +43,7 @@ bindsym $mod+Shift+e exec ~/.config/rofi/powermenu/powermenu.sh
 
 # main apps
 bindsym $mod+t exec kitty --detach
-bindsym $mod+b exec brave-browser
+bindsym $mod+b exec google-chrome-stable
 bindsym $mod+e exec thunar
 bindsym $mod+Shift+s exec pavucontrol
 
@@ -93,6 +93,8 @@ bindsym $mod+0 workspace number $ws10
 # Move to cycle workspace
 bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
+bindsym $mod+Shift+Right workspace next
+bindsym $mod+Shift+Left workspace prev
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
