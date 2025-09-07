@@ -101,7 +101,9 @@ end
 set -x PATH $HOME/.cargo/bin $PATH
 
 # vagrant
-set vagrant_completion (string match -r ".*/vagrant-[^/]+/contrib/bash/completion.sh" (ls /opt/vagrant/embedded/gems/gems/vagrant-*/contrib/bash/completion.sh))
-if test -f $vagrant_completion
-    bass source $vagrant_completion
-end
+#set vagrant_completion (string match -r ".*/vagrant-[^/]+/contrib/bash/completion.sh" (ls /opt/vagrant/embedded/gems/gems/vagrant-*/contrib/bash/completion.sh))
+#if test -f $vagrant_completion
+#    bass source $vagrant_completion
+#end
+
+

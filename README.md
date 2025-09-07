@@ -135,6 +135,14 @@ sudo apt update && sudo apt install librewolf -y
 
 ### Go Development Environment
 
+#### Python Vir Env
+
+```bash
+mkdir -p ~/env/pyenv/
+sudo apt install python3-venv -y
+python3 -m venv main
+```
+
 #### Install Go
 
 ```bash
@@ -234,6 +242,10 @@ sudo systemctl daemon-reload
 sudo mount -a
 ```
 
+### Create usb boot
+
+- [USBImager](https://gitlab.com/bztsrc/usbimager)
+
 ## Configuration Structure
 
 This dotfiles repository includes configurations for:
@@ -248,10 +260,3 @@ This dotfiles repository includes configurations for:
 - **hyprland/** - Hyprland compositor configuration
 - **zsh_debian/** - Zsh configuration for Debian systems
 
-## Contributing
-
-Feel free to fork this repository and customize the configurations to your needs. Pull requests for improvements are welcome!
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).

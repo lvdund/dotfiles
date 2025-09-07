@@ -14,7 +14,7 @@ UUID=a26286ff-d4be-49e9-b5ce-b4970535618d /               ext4    errors=remount
 UUID=CEF9-F966  /boot/efi       vfat    umask=0077      0       1
 
 
-# mydata 256gb
-UUID=a0c06ff8-d8d7-44b9-a522-83fb296cc60c	/mnt/mydata	ext4 defaults	0	0
+# 256gb
+UUID=a0c06ff8-d8d7-44b9-a522-83fb296cc60c	/mnt/myssd	ext4 defaults	0	0
 # data
-UUID=5bee94e2-64a0-41ac-ab57-37d05615e939       /mnt/data     ext4 defaults   0       0
+UUID=5bee94e2-64a0-41ac-ab57-37d05615e939       /mnt/myhdd     ext4 defaults   0       0

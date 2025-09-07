@@ -1,7 +1,7 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export --path PATH:/usr/local/bin\x1e/usr/bin\x1e/bin\x1e/usr/local/games\x1e/usr/games\x1e/home/vd/env/golang/gopath/go1\x2e24\x2e4/bin\x1e/home/vd/env/golang/goroot/go1\x2e24\x2e4/bin\x1e/home/vd/env/golang/gopath/go1\x2e24\x2e4/bin\x1e/home/vd/env/golang/goroot/go1\x2e24\x2e4/bin\x1e/home/vd/env/golang/gopath/go1\x2e24\x2e4/bin\x1e/home/vd/env/golang/goroot/go1\x2e24\x2e4/bin\x1e/home/vd/env/golang/gopath/go1\x2e24\x2e4/bin\x1e/home/vd/env/golang/goroot/go1\x2e24\x2e4/bin\x1e/home/vd/env/golang/gopath/go1\x2e24\x2e4/bin\x1e/home/vd/env/golang/goroot/go1\x2e24\x2e4/bin\x1e/opt/nvim\x2dlinux\x2dx86_64/bin
-SETUVAR __fish_initialized:3800
+SETUVAR __fish_initialized:3400
 SETUVAR _fisher_edc_2F_bass_files:\x7e/\x2econfig/fish/functions/__bass\x2epy\x1e\x7e/\x2econfig/fish/functions/bass\x2efish
 SETUVAR _fisher_jorgebucaran_2F_fisher_files:\x7e/\x2econfig/fish/functions/fisher\x2efish\x1e\x7e/\x2econfig/fish/completions/fisher\x2efish
 SETUVAR _fisher_jorgebucaran_2F_nvm_2E_fish_files:\x7e/\x2econfig/fish/functions/_nvm_index_update\x2efish\x1e\x7e/\x2econfig/fish/functions/_nvm_list\x2efish\x1e\x7e/\x2econfig/fish/functions/_nvm_version_activate\x2efish\x1e\x7e/\x2econfig/fish/functions/_nvm_version_deactivate\x2efish\x1e\x7e/\x2econfig/fish/functions/nvm\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/nvm\x2efish\x1e\x7e/\x2econfig/fish/completions/nvm\x2efish
