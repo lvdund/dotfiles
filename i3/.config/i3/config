@@ -5,6 +5,7 @@ exec_always --no-startup-id feh --bg-scale ~/.dotfiles/background/back.jpg
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 exec --no-startup-id xset s off && xset -dpms && xset s noblank
+exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -68,15 +69,15 @@ bindsym $mod+P exec --no-startup-id maim "/home/$USER/Pictures/$(date)"
 bindsym Ctrl+$mod+P exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
 # Define names for default workspaces
-set $ws1 "1: 1-term "
-set $ws2 "2:  2-vms  "
-set $ws3 "3:3-browser"
-set $ws4 "4: 4-media "
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
+set $ws1 " 1 "
+set $ws2 " 2 "
+set $ws3 " 3 "
+set $ws4 " 4 "
+set $ws5 " 5 "
+set $ws6 " 6 "
+set $ws7 " 7 "
+set $ws8 " 8 "
+set $ws9 " 9 "
 set $ws10 "10"
 # switch to workspace
 bindsym $mod+1 workspace number $ws1

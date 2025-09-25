@@ -17,6 +17,35 @@ return {
     },
   },
   {
+    'nvim-treesitter/nvim-treesitter-context',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    config = function()
+      require('treesitter-context').setup {
+        enable = true, -- Enable the plugin
+        max_lines = 3, -- Maximum number of context lines shown (0 = unlimited)
+        trim_scope = 'outer', -- Which context lines to trim if max_lines is exceeded
+        min_window_height = 0, -- Minimum editor window height to enable context
+        patterns = { -- Patterns to show as context
+          default = {
+            'class',
+            'function',
+            'method',
+            'for',
+            'while',
+            'if',
+            'switch',
+            'case',
+            'type', -- Go, Rust, etc.
+            'struct', -- C, C++
+          },
+        },
+        zindex = 20, -- Z-index of the context window
+        mode = 'topline', -- "cursor" = follow cursor, "topline" = follow top line
+        separator = nil, -- You can set e.g. "─" to visually separate context
+      }
+    end,
+  },
+  {
     'Wansmer/symbol-usage.nvim',
     event = 'LspAttach',
     config = function()
@@ -75,29 +104,4 @@ return {
       }
     end,
   },
-  -- {
-  --   'xzbdmw/colorful-menu.nvim',
-  --   config = function()
-  --     require('colorful-menu').setup {
-  --       ls = {
-  --         lua_ls = {
-  --           arguments_hl = '@comment',
-  --         },
-  --         gopls = {
-  --           align_type_to_right = true,
-  --           add_colon_before_type = false,
-  --           preserve_type_when_truncate = true,
-  --         },
-  --         fallback = true,
-  --       },
-  --       fallback_highlight = '@variable',
-  --       max_width = 60,
-  --     }
-  --   end,
-  -- },
-  -- {
-  --   'catgoose/nvim-colorizer.lua',
-  --   event = 'BufReadPre',
-  --   opts = {},
-  -- },
 }
