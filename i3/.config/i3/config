@@ -166,10 +166,8 @@ client.background #263640
 # window rules, you can find the window class using xprop
 for_window [class=gwenview|Eog|Sxiv|feh|spectacle|mpv|vlc|ark|File-roller|Xarchiver] floating enable
 for_window [class=gwenview|Eog|Sxiv|feh|spectacle|mpv|vlc|ark|File-roller|Xarchiver] focus
-# for_window [class=".*"] border pixel 3
-# hide_edge_borders smart
-for_window [class=".*"] border pixel 0
-hide_edge_borders both
+for_window [class=".*"] border pixel 2
+hide_edge_borders smart
 gaps inner 10
 smart_gaps on
 
