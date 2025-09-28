@@ -19,6 +19,9 @@ abbr -a vfish 'nvim ~/.config/fish/config.fish'
 function ls
     command lsd $argv
 end 
+function bat
+    command batcat $argv
+end 
 function lsla
     command lsd -la $argv
 end
@@ -84,7 +87,6 @@ end
 function tmux-kill-all
     tmux kill-server
 end
-
 
 # ====================== env ======================
 set GoVer go1.24.4

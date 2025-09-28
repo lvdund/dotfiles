@@ -1,7 +1,4 @@
 return {
-  -- {
-  --   'NMAC427/guess-indent.nvim',
-  -- },
   { -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
     main = 'ibl',

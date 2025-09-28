@@ -44,17 +44,15 @@ return { -- Useful plugin to show you pending keybinds.
     -- Document existing key chains
     spec = {
       { 'gr', group = '🔧 Lsp' },
-      { 's', group = '[S]urround/[S]earch' },
+      { 's', group = ' [S]urround' },
       { '<leader>b', group = '📄 [B]uffer' },
       { '<leader>d', group = '🐞 [D]ebug' },
       { '<leader>e', group = '❗ [E]rror' },
       { '<leader>g', group = '🌱 [G]it Hunk', mode = { 'n', 'v' } },
-      { 'm', group = '🔖 [M]ark' },
       { '<leader>q', group = '🚪 [Q]uit' },
       { '<leader>s', group = '🔎 [S]earch' },
       { '<leader>sn', group = '🔔 [N]otifications' },
       { '<leader>sc', group = '📝 [S]earch Todo-[C]omment' },
-      { '<leader>t', group = ' [T]oggle' },
     },
   },
 }

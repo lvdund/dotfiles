@@ -28,7 +28,7 @@ return {
       },
       auto_attach = true,
       attach_to_untracked = false,
-      current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
+      current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
       current_line_blame_opts = {
         virt_text = true,
         virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
@@ -67,7 +67,6 @@ return {
             gitsigns.nav_hunk 'next'
           end
         end)
-
         map('n', '[c', function()
           if vim.wo.diff then
             vim.cmd.normal { '[c', bang = true }
@@ -79,44 +78,12 @@ return {
         -- Actions
         map('n', '<leader>gR', gitsigns.reset_buffer, { desc = '[G]it [R]eset buffer' })
         map('n', '<leader>gp', gitsigns.preview_hunk, { desc = '[G]it [P]review change' })
-
-        map('n', '<leader>gc', function()
-          gitsigns.blame_line { full = true }
-        end, { desc = '[G]it show [C]ommit inline' })
         map('n', '<leader>gs', ":TermExec cmd='git status'<CR>", { desc = '[G]it [S]tatus' })
 
         -- Navigate
         map('n', ']g', ':Gitsigns nav_hunk next<CR>', { desc = 'Git next hunk' })
         map('n', '[g', ':Gitsigns nav_hunk prev<CR>', { desc = 'Git prev hunk' })
-
-        -- Toggles
-        map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = '[T]oggle [C]ommit inline' })
-        map('n', '<leader>tw', gitsigns.toggle_word_diff, { desc = '[T]oggle different [W]ord' })
       end,
     },
-  },
-  {
-    'kdheepak/lazygit.nvim',
-    lazy = true,
-    cmd = {
-      'LazyGit',
-      'LazyGitConfig',
-      'LazyGitCurrentFile',
-      'LazyGitFilter',
-      'LazyGitFilterCurrentFile',
-    },
-    -- optional for floating window border decoration
-    dependencies = {
-      'nvim-telescope/telescope.nvim',
-      'nvim-lua/plenary.nvim',
-    },
-    -- setting the keybinding for LazyGit with 'keys' is recommended in
-    -- order to load the plugin when the command is run for the first time
-    keys = {
-      { '<leader>gl', '<cmd>LazyGit<cr>', desc = 'LazyGit' },
-    },
-    config = function()
-      require('telescope').load_extension 'lazygit'
-    end,
   },
 }

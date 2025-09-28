@@ -19,11 +19,6 @@ A comprehensive collection of configuration files for Linux development environm
 Install the following packages before proceeding:
 
 - **stow** - For managing dotfiles symlinks
-- **fzf & ripgrep** - Required for [Telescope](https://github.com/nvim-telescope/telescope.nvim)
-- **trash-cli** - Replaces rm in [neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim)
-- **Lazygit, Lazydocker** - Git and Docker TUI tools
-- **Neovim v0.10+** - Modern text editor
-- **tmux** - Terminal multiplexer
 
 ### System-Specific Installation
 
@@ -31,17 +26,23 @@ Install the following packages before proceeding:
 
 ```bash
 # Core system packages
-sudo apt install -y xorg i3 i3status i3lock xinit lightdm
+sudo apt install -y xorg i3 i3status i3lock xinit xorg lightdm dunst
 
 # Development and utility packages
-sudo apt install -y stow git fzf ripgrep trash-cli tmux wl-clipboard kitty fish \
+sudo apt install -y stow git bat fd-find ripgrep trash-cli tmux kitty fish \
     wget curl xclip rofi feh maim lsd playerctl gparted thunar \
-    xarchiver gvfs pavucontrol gcc g++ linux-headers-amd64 lxappearance
+    xarchiver gvfs pavucontrol gcc g++ linux-headers-amd64 lxappearance clangd
 
 # Install Neovim (latest version)
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
 sudo rm -rf /opt/nvim
 sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
+
+# Install fzf
+wget https://github.com/junegunn/fzf/releases/download/v0.65.2/fzf-0.65.2-linux_amd64.tar.gz
+tar -xzf fzf-0.65.2-linux_amd64.tar.gz
+sudo mv fzf /usr/bin/
+rm fzf-0.65.2-linux_amd64.tar.gz
 ```
 
 #### Arch Linux
@@ -83,7 +84,7 @@ sudo mv FiraCode /usr/share/fonts/opentype/
 
 # Install system fonts
 sudo apt install fonts-dejavu fonts-liberation fonts-noto fonts-noto-core \
-    fonts-freefont-ttf fonts-font-awesome fonts-noto-color-emoji
+    fonts-freefont-ttf fonts-font-awesome fonts-noto-color-emoji papirus-icon-theme breeze-icon-theme
 ```
 
 ## Cleanup

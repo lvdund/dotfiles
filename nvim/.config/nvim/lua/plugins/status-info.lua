@@ -13,7 +13,6 @@ return {
       { '<leader>ba', '<Cmd>bufdo bd<CR>', desc = 'Close all Buffer' },
       { '<leader>bc', '<Cmd>bdelete<CR>', desc = 'Close this Buffer' },
       { '<leader>bo', '<Cmd>BufferLineCloseOthers<CR>', desc = 'Close other Buffers' },
-      -- { '<leader>bp', '<Cmd>BufferLineTogglePin<CR>', desc = 'Toggle Pin' },
       { '[B', '<Cmd>BufferLineMovePrev<CR>', desc = 'Move Buffers Left' },
       { ']B', '<Cmd>BufferLineMoveNext<CR>', desc = 'Move Buffers Right' },
       { '<S-Tab>', '<cmd>bprev<cr>', desc = 'Prev Buffer' },

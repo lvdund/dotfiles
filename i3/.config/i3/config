@@ -1,11 +1,12 @@
 set $mod Mod4
 font pango:FiraCode Nerd Font Bold 12
 exec --no-startup-id dex --autostart --environment i3
-exec_always --no-startup-id feh --bg-scale ~/.dotfiles/background/darkmoon.jpg
+exec_always --no-startup-id feh --bg-scale ~/dotfiles/background/darkmoon.jpg
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 exec --no-startup-id xset s off && xset -dpms && xset s noblank
-exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
+exec --no-startup-id dunst
+# exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -13,18 +14,6 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
-
-# bindsym XF86AudioRaiseVolume exec --no-startup-id ./volume_brightness.sh volume_up
-# bindsym XF86AudioLowerVolume exec --no-startup-id ./volume_brightness.sh volume_down
-# bindsym XF86AudioMute exec --no-startup-id ./volume_brightness.sh volume_mute
-# bindsym XF86MonBrightnessUp exec --no-startup-id ./volume_brightness.sh brightness_up
-# bindsym XF86MonBrightnessDown exec --no-startup-id ./volume_brightness.sh brightness_down
-# bindsym XF86AudioPlayPause exec --no-startup-id ./volume_brightness.sh play_pause
-# bindsym XF86AudioPause exec --no-startup-id ./volume_brightness.sh play_pause
-# bindsym XF86AudioPlay exec --no-startup-id ./volume_brightness.sh play_pause
-# bindsym XF86AudioNext exec --no-startup-id ./volume_brightness.sh next_track
-# bindsym XF86AudioPrev exec --no-startup-id ./volume_brightness.sh prev_track
-
 
 # Use Mouse+$mod
 floating_modifier $mod

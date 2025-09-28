@@ -45,24 +45,6 @@ map('n', '<leader>qa', ':qa<CR>', { desc = '[Q]uit [A]ll' }) -- close
 map('n', '<leader>qc', ':close<CR>', { desc = 'Close' }) -- close
 map('n', '<leader>qq', ':bp|bd#<CR>', { desc = 'Close but keep split window' }) -- close buffer
 
--- notifycation
-map('n', '<leader>snn', ':Telescope notify<CR>', { desc = 'List Notifications' })
-map('n', '<leader>snc', ':NotificationsClear', { desc = 'Clear All Notifications' })
-
--- log
-map('n', '<leader>scc', ':TodoTelescope<CR>', { desc = 'List all TODO' })
-map('n', '<leader>scn', function()
-  require('todo-comments').jump_next()
-end, { desc = '[N]ext TODO' })
-map('n', '<leader>scp', function()
-  require('todo-comments').jump_prev()
-end, { desc = '[P]revious TODO' })
-
--- lsp
-map({ 'n', 'x' }, 'gca', function()
-  require('tiny-code-action').code_action()
-end, { desc = 'code action with preview' })
-
 -- Diagnostic
 map('n', '<leader>ee', vim.diagnostic.open_float, { desc = 'Open Errors' })
 map('n', '<leader>en', vim.diagnostic.goto_next, { desc = '[N]ext Error' })

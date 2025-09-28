@@ -62,15 +62,7 @@ run_cmd() {
 				systemctl suspend
 				;;
 			--logout)
-				case "$DESKTOP_SESSION" in
-					openbox) openbox --exit ;;
-					bspwm) bspc quit ;;
-					i3) i3-msg exit ;;
-					plasma) qdbus org.kde.ksmserver /KSMServer logout 0 0 0 ;;
-					xfce) killall xfce4-session ;;
-					hyprland) killall Hyprland ;;
-				esac
-				;;
+				i3-msg exit ;;
 		esac
 	else
 		exit 0
