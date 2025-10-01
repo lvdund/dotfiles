@@ -48,9 +48,9 @@ rm fzf-0.65.2-linux_amd64.tar.gz
 #### Arch Linux
 
 ```bash
-paru -S stow git fzf ripgrep trash-cli lazygit lazydocker neovim wl-clipboard \
-    kitty tmux extension-manager xclip ibus-bamboo lsd bash-completion maim \
-    clang rofi
+paru -S stow git fzf ripgrep neovim tmux xclip ibus-bamboo lsd bash-completion \
+    maim clang rofi i3 i3status dunst dmenu pavucontrol ttf-firacode-nerd feh \
+    thunar gvfs xdg-desktop-portal xdg-desktop-portal-gtk firefox lxappearance
 ```
 
 ### Input Method (IBus-Bamboo)
@@ -84,7 +84,8 @@ sudo mv FiraCode /usr/share/fonts/opentype/
 
 # Install system fonts
 sudo apt install fonts-dejavu fonts-liberation fonts-noto fonts-noto-core \
-    fonts-freefont-ttf fonts-font-awesome fonts-noto-color-emoji papirus-icon-theme breeze-icon-theme
+    fonts-freefont-ttf fonts-font-awesome fonts-noto-color-emoji \
+    papirus-icon-theme breeze-icon-theme
 ```
 
 ## Cleanup
@@ -125,14 +126,6 @@ source ~/.bashrc
 ```
 
 ## Additional Software
-
-### LibreWolf Browser
-
-```bash
-sudo apt update && sudo apt install extrepo -y
-sudo extrepo enable librewolf
-sudo apt update && sudo apt install librewolf -y
-```
 
 ### Go Development Environment
 
@@ -192,27 +185,6 @@ sudo tar -xvzf jdk-21_linux-x64_bin.tar.gz -C ~/env/java
 npm i -g bash-language-server
 ```
 
-## Desktop Environments
-
-### Hyprland (Wayland)
-
-```bash
-paru -S hyprland hyprpaper waybar rofi swaync pavucontrol
-```
-
-### i3 Window Manager (Arch Linux)
-
-```bash
-paru -S i3-wm i3status dunst dmenu pavucontrol ttf-firacode-nerd feh maim thunar gvfs
-```
-
-### Zsh Setup (Debian 12)
-
-```bash
-sudo apt install zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-```
-
 ## Auto Mount Disk
 
 ### Check Disk UUID
@@ -246,6 +218,13 @@ sudo mount -a
 ### Create usb boot
 
 - [USBImager](https://gitlab.com/bztsrc/usbimager)
+
+### Git config
+
+```bash
+git config --global user.email "lvdund@gmail.com"
+git config --global user.name "lvdund"
+```
 
 ## Configuration Structure
 

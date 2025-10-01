@@ -89,6 +89,7 @@ function tmux-kill-all
 end
 
 # ====================== env ======================
+# set GoVer ''
 set GoVer go1.24.4
 if test -z "$GoVer"
     echo "GoVer is not set. No export."
@@ -100,7 +101,7 @@ else
 end
 
 # Rust
-set -x PATH $HOME/.cargo/bin $PATH
+# set -x PATH $HOME/.cargo/bin $PATH
 
 # vagrant
 #set vagrant_completion (string match -r ".*/vagrant-[^/]+/contrib/bash/completion.sh" (ls /opt/vagrant/embedded/gems/gems/vagrant-*/contrib/bash/completion.sh))
