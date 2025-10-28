@@ -109,4 +109,19 @@ end
 #    bass source $vagrant_completion
 #end
 
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+
+# # >>> conda initialize >>>
+# # !! Contents within this block are managed by 'conda init' !!
+# if test -f /home/vd/env/anaconda3/bin/conda
+#     eval /home/vd/env/anaconda3/bin/conda "shell.fish" "hook" $argv | source
+# else
+#     if test -f "/home/vd/env/anaconda3/etc/fish/conf.d/conda.fish"
+#         . "/home/vd/env/anaconda3/etc/fish/conf.d/conda.fish"
+#     else
+#         set -x PATH "/home/vd/env/anaconda3/bin" $PATH
+#     end
+# end
+# # <<< conda initialize <<<
 

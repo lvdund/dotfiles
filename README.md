@@ -50,7 +50,7 @@ rm fzf-0.65.2-linux_amd64.tar.gz
 ```bash
 paru -S stow git fzf ripgrep neovim tmux xclip ibus-bamboo lsd bash-completion \
     maim clang rofi i3 i3status dunst dmenu pavucontrol ttf-firacode-nerd feh \
-    thunar gvfs xdg-desktop-portal xdg-desktop-portal-gtk firefox lxappearance
+    thunar gvfs xdg-desktop-portal xdg-desktop-portal-gtk firefox lxappearance os-prober
 ```
 
 ### Input Method (IBus-Bamboo)
@@ -183,6 +183,8 @@ sudo tar -xvzf jdk-21_linux-x64_bin.tar.gz -C ~/env/java
 
 ```bash
 npm i -g bash-language-server
+npm install -g eslint
+npm install -g typescript-language-server typescript
 ```
 
 ## Auto Mount Disk

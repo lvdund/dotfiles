@@ -100,18 +100,22 @@ return {
       opts.grep = {
         prompt = 'Grep ❯ ',
         input_prompt = 'Grep For ❯ ',
+        file_icons = true,
+        git_icons = true,
         rg_opts = table.concat({
-          '--hidden',
           '--follow',
           '--column',
           '--line-number',
-          '--no-heading',
           '--smart-case',
           '--max-columns=4096',
-          '--color=never',
-          '-g "!.git"',
+          '--hidden',
+          '--glob=!**/.git/**',
         }, ' '),
+        no_ignore = true,
         hidden = true,
+        rg_glob = true,
+        glob_flag = '--iglob',
+        glob_separator = '%s%-%-',
       }
 
       -- Live grep
