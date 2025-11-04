@@ -1,7 +1,7 @@
 set $mod Mod4
 font pango:FiraCode Nerd Font Bold 12
 exec --no-startup-id dex --autostart --environment i3
-exec_always --no-startup-id feh --bg-scale ~/dotfiles/background/darkmoon.jpg
+exec_always --no-startup-id feh --bg-scale ~/dotfiles/background/momo_ayase_gruvbox.png
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 exec --no-startup-id xset s off && xset -dpms && xset s noblank
@@ -29,7 +29,7 @@ bindsym $mod+Right focus right
 
 # Rofi
 bindsym $mod+a exec ~/.config/rofi/launchers/launcher.sh 
-bindsym $mod+Shift+e exec ~/.config/rofi/powermenu/powermenu.sh 
+bindsym $mod+Shift+e exec ~/.config/rofi/powermenu/powermenu.sh
 
 # main apps
 bindsym $mod+t exec kitty --detach

@@ -16,11 +16,12 @@ return {
       { 'grr', '<cmd>FzfLua lsp_references<cr>', desc = 'Find References' },
       { 'gri', '<cmd>FzfLua lsp_implementations<cr>', desc = 'Go to Implementation' },
       { 'grt', '<cmd>FzfLua lsp_typedefs<cr>', desc = 'Go to Type Definition' },
-      { 'gra', '<cmd>FzfLua lsp_code_action<cr>', desc = 'Code Actions' },
+      { 'gra', '<cmd>FzfLua lsp_code_actions silent=true<cr>', desc = 'Code Actions' },
       { 'grn', vim.lsp.buf.rename, desc = 'Rename' },
       { 'gro', '<cmd>FzfLua lsp_document_symbols<cr>', desc = 'Document Symbols' },
 
       -- other
+      { '<leader>sp', ':ProjectFzf<CR>', { noremap = true, silent = true, desc = 'Find Project' } },
       { '<leader>sn', ':Noice history<CR>', desc = 'List Notifications' },
       { '<leader>scc', ':TodoFzfLua<CR>', desc = 'List all TODO' },
       {
@@ -222,5 +223,13 @@ return {
         fzf_colors = true,
       })
     end,
+  },
+  {
+    'jakobwesthoff/project-fzf.nvim',
+    dependencies = {
+      'ahmedkhalf/project.nvim',
+      'ibhagwan/fzf-lua',
+    },
+    opts = {},
   },
 }

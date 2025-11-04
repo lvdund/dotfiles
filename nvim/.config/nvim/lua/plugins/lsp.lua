@@ -48,10 +48,58 @@ return {
       }
 
       local capabilities = require('blink.cmp').get_lsp_capabilities()
-      -- local capabilities = vim.lsp.protocol.make_client_capabilities()
-      -- capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
       local servers = {
+        dockerls = {},
+        docker_compose_language_service = {},
+        marksman = {},
+        jsonls = {
+          -- lazy-load schemastore when needed
+          before_init = function(_, new_config)
+            new_config.settings.json.schemas = new_config.settings.json.schemas or {}
+            vim.list_extend(new_config.settings.json.schemas, require('schemastore').json.schemas())
+          end,
+          settings = {
+            json = {
+              format = {
+                enable = true,
+              },
+              validate = { enable = true },
+            },
+          },
+        },
+        yamlls = {
+          -- Have to add this for yamlls to understand that we support line folding
+          capabilities = {
+            textDocument = {
+              foldingRange = {
+                dynamicRegistration = false,
+                lineFoldingOnly = true,
+              },
+            },
+          },
+          -- lazy-load schemastore when needed
+          before_init = function(_, new_config)
+            new_config.settings.yaml.schemas = vim.tbl_deep_extend('force', new_config.settings.yaml.schemas or {}, require('schemastore').yaml.schemas())
+          end,
+          settings = {
+            redhat = { telemetry = { enabled = false } },
+            yaml = {
+              keyOrdering = false,
+              format = {
+                enable = true,
+              },
+              validate = true,
+              schemaStore = {
+                -- Must disable built-in schemaStore support to use
+                -- schemas from SchemaStore.nvim plugin
+                enable = false,
+                -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+                url = '',
+              },
+            },
+          },
+        },
         clangd = {
           cmd = { '/usr/bin/clangd', '--background-index', '--clang-tidy', '--log=verbose' },
           init_options = {
@@ -69,58 +117,50 @@ return {
           ),
           single_file_support = true,
         },
+        bacon_ls = {
+          enabled = diagnostics == 'bacon-ls',
+        },
         rust_analyzer = {
-          settings = {
-            ['rust-analyzer'] = {
-              cargo = { loadOutDirsFromCheck = true, allFeatures = true },
-              checkOnSave = { command = 'clippy' },
-              assist = { importGranularity = 'module', importPrefix = 'self' },
-              diagnostics = { enable = true, enableExperimental = true },
-              inlayHints = {
-                locationLinks = false,
-                chainingHints = true,
-                parameterHints = true,
-                typeHints = true,
-              },
-              procMacro = { enable = true },
-            },
-          },
+          enable = false,
         },
         ts_ls = {
-          init_options = {
-            preferences = {
-              includeInlayParameterNameHints = 'all',
-              includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-              includeInlayFunctionParameterTypeHints = true,
-              includeInlayVariableTypeHints = true,
-              includeInlayPropertyDeclarationTypeHints = true,
-              includeInlayFunctionLikeReturnTypeHints = true,
-              includeInlayEnumMemberValueHints = true,
-              importModuleSpecifierPreference = 'relative',
-              quotePreference = 'single',
-            },
+          enabled = false,
+        },
+        vtsls = {
+          -- explicitly add default filetypes, so that we can extend
+          -- them in related extras
+          filetypes = {
+            'javascript',
+            'javascriptreact',
+            'javascript.jsx',
+            'typescript',
+            'typescriptreact',
+            'typescript.tsx',
           },
           settings = {
-            typescript = {
-              inlayHints = {
-                includeInlayParameterNameHints = 'all',
-                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-                includeInlayFunctionParameterTypeHints = true,
-                includeInlayVariableTypeHints = true,
-                includeInlayPropertyDeclarationTypeHints = true,
-                includeInlayFunctionLikeReturnTypeHints = true,
-                includeInlayEnumMemberValueHints = true,
+            complete_function_calls = true,
+            vtsls = {
+              enableMoveToFileCodeAction = true,
+              autoUseWorkspaceTsdk = true,
+              experimental = {
+                maxInlayHintLength = 30,
+                completion = {
+                  enableServerSideFuzzyMatch = true,
+                },
               },
             },
-            javascript = {
+            typescript = {
+              updateImportsOnFileMove = { enabled = 'always' },
+              suggest = {
+                completeFunctionCalls = true,
+              },
               inlayHints = {
-                includeInlayParameterNameHints = 'all',
-                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-                includeInlayFunctionParameterTypeHints = true,
-                includeInlayVariableTypeHints = true,
-                includeInlayPropertyDeclarationTypeHints = true,
-                includeInlayFunctionLikeReturnTypeHints = true,
-                includeInlayEnumMemberValueHints = true,
+                enumMemberValues = { enabled = true },
+                functionLikeReturnTypes = { enabled = true },
+                parameterNames = { enabled = 'literals' },
+                parameterTypes = { enabled = true },
+                propertyDeclarationTypes = { enabled = true },
+                variableTypes = { enabled = false },
               },
             },
           },
@@ -160,14 +200,22 @@ return {
             },
           },
         },
+        bashls = {},
+        lua_ls = {
+          settings = {
+            Lua = {
+              completion = {
+                callSnippet = 'Replace',
+              },
+            },
+          },
+        },
         gopls = {
           settings = {
-            filetypes = { 'go', 'gomod', 'gowork', 'gotmpl', 'gosum' },
-            root_markers = { 'go.mod', 'go.work', '.git' },
             gopls = {
               gofumpt = true,
               codelenses = {
-                gc_details = true,
+                gc_details = false,
                 generate = true,
                 regenerate_cgo = true,
                 run_govulncheck = true,
@@ -186,68 +234,10 @@ return {
                 rangeVariableTypes = true,
               },
               analyses = {
-                fieldalignment = true,
                 nilness = true,
                 unusedparams = true,
                 unusedwrite = true,
                 useany = true,
-                unreachable = true,
-                modernize = true,
-                stylecheck = true,
-                appends = true,
-                asmdecl = true,
-                assign = true,
-                atomic = true,
-                bools = true,
-                buildtag = true,
-                cgocall = true,
-                composite = true,
-                contextcheck = true,
-                deba = true,
-                atomicalign = true,
-                composites = true,
-                copylocks = true,
-                deepequalerrors = true,
-                defers = true,
-                deprecated = true,
-                directive = true,
-                embed = true,
-                errorsas = true,
-                fillreturns = true,
-                framepointer = true,
-                gofix = true,
-                hostport = true,
-                infertypeargs = true,
-                lostcancel = true,
-                httpresponse = true,
-                ifaceassert = true,
-                loopclosure = true,
-                nilfunc = true,
-                nonewvars = true,
-                noresultvalues = true,
-                printf = true,
-                shadow = true,
-                shift = true,
-                sigchanyzer = true,
-                simplifycompositelit = true,
-                simplifyrange = true,
-                simplifyslice = true,
-                slog = true,
-                sortslice = true,
-                stdmethods = true,
-                stdversion = true,
-                stringintconv = true,
-                structtag = true,
-                testinggoroutine = true,
-                tests = true,
-                timeformat = true,
-                unmarshal = true,
-                unsafeptr = true,
-                unusedfunc = true,
-                unusedresult = true,
-                waitgroup = true,
-                yield = true,
-                unusedvariable = true,
               },
               usePlaceholders = true,
               completeUnimported = true,
@@ -256,30 +246,14 @@ return {
               semanticTokens = true,
             },
           },
-          -- capabilities = vim.tbl_deep_extend("force", {}, vim.lsp.protocol.make_client_capabilities(), {
-          -- 	fileOperations = {
-          -- 		didRename = true,
-          -- 		willRename = true,
-          -- 	},
-          -- }),
-        },
-        bashls = {},
-        lua_ls = {
-          settings = {
-            Lua = {
-              completion = {
-                callSnippet = 'Replace',
-              },
-            },
-          },
         },
       }
 
-      local ensure_installed = vim.tbl_keys(servers or {})
-      vim.list_extend(ensure_installed, {
-        'stylua', -- Used to format Lua code
-      })
-      require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+      -- local ensure_installed = vim.tbl_keys(servers or {})
+      -- vim.list_extend(ensure_installed, {
+      --   'stylua', -- Used to format Lua code
+      -- })
+      -- require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
         ensure_installed = {},
@@ -293,6 +267,8 @@ return {
           end,
         },
       }
+
+      vim.diagnostic.config { virtual_text = false }
     end,
   },
 }
