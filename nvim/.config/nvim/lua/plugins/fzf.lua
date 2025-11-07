@@ -3,12 +3,10 @@ return {
     'ibhagwan/fzf-lua',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     keys = {
-      -- Find files
+      -- Find
       { '<leader>sf', '<cmd>FzfLua files<cr>', desc = 'Find Files' },
       { '<leader>sg', '<cmd>FzfLua live_grep<cr>', desc = 'Live Grep' },
       { '<leader>ss', '<cmd>FzfLua resume<cr>', desc = 'Resume Last Search' },
-      { '<leader>sd', '<cmd>FzfLua diagnostics_document<cr>', desc = 'Document Diagnostics' },
-      { '<leader>sD', '<cmd>FzfLua diagnostics_workspace<cr>', desc = 'Workspace Diagnostics' },
 
       -- LSP bindings
       { 'gd', '<cmd>FzfLua lsp_definitions<cr>', desc = 'Go to Definition' },
@@ -18,7 +16,26 @@ return {
       { 'grt', '<cmd>FzfLua lsp_typedefs<cr>', desc = 'Go to Type Definition' },
       { 'gra', '<cmd>FzfLua lsp_code_actions silent=true<cr>', desc = 'Code Actions' },
       { 'grn', vim.lsp.buf.rename, desc = 'Rename' },
-      { 'gro', '<cmd>FzfLua lsp_document_symbols<cr>', desc = 'Document Symbols' },
+      { '<leader>sd', '<cmd>FzfLua diagnostics_document<cr>', desc = 'Document Diagnostics' },
+      { '<leader>sD', '<cmd>FzfLua diagnostics_workspace<cr>', desc = 'Workspace Diagnostics' },
+      {
+        'gro',
+        function()
+          require('fzf-lua').lsp_document_symbols {
+            regex_filter = symbols_filter,
+          }
+        end,
+        desc = 'Goto Symbol',
+      },
+      {
+        'grO',
+        function()
+          require('fzf-lua').lsp_live_workspace_symbols {
+            regex_filter = symbols_filter,
+          }
+        end,
+        desc = 'Goto Symbol (Workspace)',
+      },
 
       -- other
       { '<leader>sp', ':ProjectFzf<CR>', { noremap = true, silent = true, desc = 'Find Project' } },
@@ -41,21 +58,21 @@ return {
     },
     opts = function(_, opts)
       local fzf = require 'fzf-lua'
+      local config = fzf.config
       local actions = fzf.actions
 
-      -- Default keymaps for fzf UI
-      fzf.config.defaults.keymap = {
-        fzf = {
-          ['ctrl-q'] = 'select-all+accept', -- send all to quickfix
-          ['tab'] = 'toggle', -- toggle selection
-          ['shift-tab'] = 'toggle-all', -- toggle all
-          ['ctrl-a'] = 'select-all', -- select all
-          ['ctrl-d'] = 'deselect-all', -- deselect all
-        },
-      }
+      -- Quickfix
+      config.defaults.keymap.fzf['ctrl-q'] = 'select-all+accept'
+      config.defaults.keymap.fzf['ctrl-u'] = 'half-page-up'
+      config.defaults.keymap.fzf['ctrl-d'] = 'half-page-down'
+      config.defaults.keymap.fzf['ctrl-x'] = 'jump'
+      config.defaults.keymap.fzf['ctrl-f'] = 'preview-page-down'
+      config.defaults.keymap.fzf['ctrl-b'] = 'preview-page-up'
+      config.defaults.keymap.builtin['<c-f>'] = 'preview-page-down'
+      config.defaults.keymap.builtin['<c-b>'] = 'preview-page-up'
 
       -- Actions for file and grep pickers
-      fzf.config.defaults.actions = {
+      config.defaults.actions = {
         files = {
           ['default'] = actions.file_edit,
           ['ctrl-x'] = actions.file_split,
@@ -76,6 +93,8 @@ return {
       opts.winopts = {
         width = 0.85,
         height = 0.85,
+        row = 0.5,
+        col = 0.5,
         preview = {
           default = 'builtin',
           layout = 'vertical',
@@ -87,6 +106,7 @@ return {
 
       -- Files picker: always show hidden files
       opts.files = {
+        cwd_prompt = false,
         prompt = 'Files ❯ ',
         file_icons = true,
         git_icons = true,
@@ -95,6 +115,10 @@ return {
         fd_opts = [[--color=never --type f --hidden --follow --exclude .git]],
         rg_opts = [[--files --hidden --follow -g '!.git']],
         hidden = true, -- always show hidden files
+        actions = {
+          ['alt-i'] = { actions.toggle_ignore },
+          ['alt-h'] = { actions.toggle_hidden },
+        },
       }
 
       -- Grep pickers: always search hidden files
@@ -117,6 +141,10 @@ return {
         rg_glob = true,
         glob_flag = '--iglob',
         glob_separator = '%s%-%-',
+        actions = {
+          ['alt-i'] = { actions.toggle_ignore },
+          ['alt-h'] = { actions.toggle_hidden },
+        },
       }
 
       -- Live grep
@@ -161,7 +189,10 @@ return {
           },
         },
         -- Individual LSP picker prompts
-        code_actions = { prompt = 'Code Actions ❯ ' },
+        code_actions = {
+          prompt = 'Code Actions ❯ ',
+          previewer = vim.fn.executable 'delta' == 1 and 'codeaction_native' or nil,
+        },
         definitions = { prompt = 'Definitions ❯ ' },
         declarations = { prompt = 'Declarations ❯ ' },
         implementations = { prompt = 'Implementations ❯ ' },

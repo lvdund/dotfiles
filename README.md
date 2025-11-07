@@ -153,6 +153,20 @@ mv ~/env/golang/goroot/go ~/env/golang/goroot/go1.24.4
 rm go1.24.4.linux-amd64.tar.gz
 ```
 
+```bash
+# Create Go directory structure
+mkdir -p ~/env/golang/gopath/go1.25.3/{bin,pkg,src}
+mkdir -p ~/env/golang/goroot
+
+# Download and install Go
+wget https://dl.google.com/go/go1.25.3.linux-amd64.tar.gz
+tar -C ~/env/golang/goroot -zxvf go1.25.3.linux-amd64.tar.gz
+mv ~/env/golang/goroot/go ~/env/golang/goroot/go1.25.3
+
+# Clean up
+rm go1.25.3.linux-amd64.tar.gz
+```
+
 #### Install Go Tools
 
 ```bash

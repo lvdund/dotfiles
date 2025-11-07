@@ -16,6 +16,7 @@ set -x PATH $PATH /opt/nvim-linux-x86_64/bin
 # ====================== Aliases (functions) ======================
 abbr -a sfish 'source ~/.config/fish/config.fish'
 abbr -a vfish 'nvim ~/.config/fish/config.fish'
+abbr -a paru-clean 'paru -Rns $(paru -Qdtq)'
 function ls
     command lsd $argv
 end 
@@ -91,37 +92,19 @@ end
 # ====================== env ======================
 # set GoVer ''
 set GoVer go1.24.4
+# set GoVer go1.25.3
+set -gx PATH (string match -v '*golang*' $PATH)
 if test -z "$GoVer"
     echo "GoVer is not set. No export."
 else
-    set -x GOPATH /home/vd/env/golang/gopath/$GoVer
-    set -x GOROOT /home/vd/env/golang/goroot/$GoVer
-    set -x PATH $PATH $GOPATH/bin $GOROOT/bin
+	set -x GOPATH /home/vd/env/golang/gopath/$GoVer
+	set -x GOROOT /home/vd/env/golang/goroot/$GoVer
+	set -x PATH $GOPATH/bin $GOROOT/bin $PATH
     set -x GO111MODULE auto
 end
-
-# Rust
-# set -x PATH $HOME/.cargo/bin $PATH
-
-# vagrant
-#set vagrant_completion (string match -r ".*/vagrant-[^/]+/contrib/bash/completion.sh" (ls /opt/vagrant/embedded/gems/gems/vagrant-*/contrib/bash/completion.sh))
-#if test -f $vagrant_completion
-#    bass source $vagrant_completion
-#end
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 
-# # >>> conda initialize >>>
-# # !! Contents within this block are managed by 'conda init' !!
-# if test -f /home/vd/env/anaconda3/bin/conda
-#     eval /home/vd/env/anaconda3/bin/conda "shell.fish" "hook" $argv | source
-# else
-#     if test -f "/home/vd/env/anaconda3/etc/fish/conf.d/conda.fish"
-#         . "/home/vd/env/anaconda3/etc/fish/conf.d/conda.fish"
-#     else
-#         set -x PATH "/home/vd/env/anaconda3/bin" $PATH
-#     end
-# end
-# # <<< conda initialize <<<
+
 
