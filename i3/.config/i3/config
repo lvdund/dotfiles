@@ -22,10 +22,6 @@ bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
-# bindsym $mod+Shift+Left move left
-# bindsym $mod+Shift+Down move down
-# bindsym $mod+Shift+Up move up
-# bindsym $mod+Shift+Right move right
 
 # Rofi
 bindsym $mod+a exec ~/.config/rofi/launchers/launcher.sh 
@@ -40,10 +36,6 @@ bindsym $mod+Shift+s exec pavucontrol
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# split in horizontal orientation
-# bindsym $mod+h split h
-# split in vertical orientation
-# bindsym $mod+v split v
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)

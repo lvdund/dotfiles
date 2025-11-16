@@ -5,8 +5,8 @@ dir="$HOME/.config/rofi/powermenu"
 theme='style'
 
 # CMDs
-uptime="`uptime -p | sed -e 's/up //g'`"
-host=`hostname`
+uptime="$(uptime -p | sed -e 's/up //g')"
+host=$(hostname)
 
 # Options
 lvdund=" Info"
@@ -54,15 +54,16 @@ run_cmd() {
 	selected="$(confirm_exit)"
 	if [[ "$selected" == "$yes" ]]; then
 		case $1 in
-			--shutdown) systemctl poweroff ;;
-			--reboot) systemctl reboot ;;
-			--suspend) 
-				playerctl pause                # Pause any MPRIS-compliant media player
-				# pactl set-sink-mute @DEFAULT_SINK@ 1   # Mute via Pulse/ PipeWire
-				systemctl suspend
-				;;
-			--logout)
-				i3-msg exit ;;
+		--shutdown) systemctl poweroff ;;
+		--reboot) systemctl reboot ;;
+		--suspend)
+			playerctl pause # Pause any MPRIS-compliant media player
+			# pactl set-sink-mute @DEFAULT_SINK@ 1   # Mute via Pulse/ PipeWire
+			systemctl suspend
+			;;
+		--logout)
+			i3-msg exit
+			;;
 		esac
 	else
 		exit 0
@@ -72,23 +73,23 @@ run_cmd() {
 # Actions
 chosen="$(run_rofi)"
 case "$chosen" in
-    *Info) 
-		rofi -e "User: $USER | Host: $host | Uptime: $uptime"
-		;;
-    *Shutdown) 
-		run_cmd --shutdown
-		;;
-    *Reboot) 
-		run_cmd --reboot
-		;;
-    *Lock) 
-		playerctl pause    # Pause any MPRIS-compliant media player
-		i3lock -c 000000
-		;;
-    *Suspend) 
-		run_cmd --suspend
-		;;
-    *Logout) 
-		run_cmd --logout
-		;;
+*Info)
+	rofi -e "User: $USER | Host: $host | Uptime: $uptime"
+	;;
+*Shutdown)
+	run_cmd --shutdown
+	;;
+*Reboot)
+	run_cmd --reboot
+	;;
+*Lock)
+	playerctl pause # Pause any MPRIS-compliant media player
+	i3lock -c 000000
+	;;
+*Suspend)
+	run_cmd --suspend
+	;;
+*Logout)
+	run_cmd --logout
+	;;
 esac
