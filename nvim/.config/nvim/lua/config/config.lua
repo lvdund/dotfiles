@@ -28,3 +28,7 @@ vim.opt.signcolumn = 'auto'
 vim.opt.wrap = true
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
+
+-- ignore: fuzz, grep
+vim.opt.wildignore:append '**/node_modules/*'
+vim.opt.wildignore:append '**/package-lock.json'

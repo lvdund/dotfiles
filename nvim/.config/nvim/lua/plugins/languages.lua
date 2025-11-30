@@ -21,6 +21,17 @@ return {
       },
     },
   },
+  {
+    'OXY2DEV/markview.nvim',
+    lazy = false,
+    dependencies = { 'saghen/blink.cmp' },
+    opts = {
+      preview = {
+        filetypes = { 'markdown', 'codecompanion' },
+        ignore_buftypes = {},
+      },
+    },
+  },
   -- {
   --   'maxandron/goplements.nvim',
   --   ft = 'go',
@@ -34,14 +45,14 @@ return {
   --     highlight = 'Goplements',
   --   },
   -- },
-  -- {
-  --   'zgs225/gomodifytags.nvim',
-  --   cmd = { 'GoAddTags', 'GoRemoveTags', 'GoInstallModifyTagsBin' },
-  --   dependencies = {
-  --     'nvim-treesitter/nvim-treesitter',
-  --   },
-  --   config = function()
-  --     require('gomodifytags').setup() -- Optional: You can add any specific configuration here if needed.
-  --   end,
-  -- },
+  {
+    'zgs225/gomodifytags.nvim',
+    cmd = { 'GoAddTags', 'GoRemoveTags', 'GoInstallModifyTagsBin' },
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+    },
+    config = function()
+      require('gomodifytags').setup()
+    end,
+  },
 }
