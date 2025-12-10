@@ -61,13 +61,17 @@ return {
             surface2 = '#3A3D4A',
             surface1 = '#2F313D',
             surface0 = '#1D1E29',
-            base = '#0b0b12',
-            mantle = '#11111a',
-            crust = '#191926',
+            -- base = '#0b0b12',
+            -- mantle = '#11111a',
+            -- crust = '#191926',
+            base = '#000000',
+            mantle = '#0A0A0A',
+            crust = '#101010',
           },
         },
         highlight_overrides = {
           all = function(colors)
+            local mocha = require('catppuccin.palettes').get_palette 'mocha'
             return {
               CurSearch = { bg = colors.sky },
               IncSearch = { bg = colors.sky },
