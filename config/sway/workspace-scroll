@@ -1,0 +1,14 @@
+#!/bin/sh
+
+LOCK=/tmp/sway-workspace-scroll-$UID
+
+# Ignore additional wheel events for 150 ms
+[ -e "$LOCK" ] && exit 0
+
+touch "$LOCK"
+swaymsg workspace "$1"
+
+(
+    sleep 0.15
+    rm -f "$LOCK"
+) &

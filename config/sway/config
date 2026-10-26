@@ -76,11 +76,19 @@ bindsym $mod+Shift+5 move container to workspace $ws5
 bindsym $mod+Page_Up workspace prev
 bindsym $mod+Page_Down workspace next
 
+bindsym --whole-window $mod+button4 exec ~/.config/sway/workspace-scroll prev
+bindsym --whole-window $mod+button5 exec ~/.config/sway/workspace-scroll next
+
 # Mouse
 floating_modifier $mod normal
 
 # Float extension dialogs and volume control windows
-for_window [title="(?i).*(Extension:|Volum(?:e|n) Control).*"] floating enable
+for_window [title="(?i).*(Extension:|Volum(?:e|n) Control|Fcitx Configuration).*"] floating enable
+
+# screenshot
+bindsym $mod+p exec grim ~/Pictures/screenshot-$(date +%F-%H%M%S).png
+bindsym $mod+Ctrl+Shift+p exec grim -g "$(slurp)" ~/Pictures/screenshot-$(date +%F-%H%M%S).png
+bindsym $mod+Ctrl+p exec grim -g "$(slurp)" - | wl-copy
 
 # Waybar
 exec waybar
