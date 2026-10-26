@@ -1,0 +1,9 @@
+/* Neon grey Waybar color palette */
+@define-color foreground #eeeeee;
+@define-color background #080808;
+@define-color surface    #303030;
+@define-color muted      #8a8a8a;
+@define-color accent     #d8d8d8;
+@define-color warning    #bcbcbc;
+@define-color urgent     #f8f8f8;
+@define-color tooltip    #161616;

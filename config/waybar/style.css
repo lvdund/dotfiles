@@ -1,0 +1,110 @@
+@import "./theme.css";
+
+* {
+  min-height: 0;
+  border: none;
+  border-radius: 0;
+  color: @foreground;
+  font-family: "FiraCode Nerd Font", sans-serif;
+  font-size: 13px;
+}
+
+window#waybar {
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.modules-left {
+  margin-left: 0;
+}
+
+.modules-right {
+  margin-right: 4px;
+}
+
+#custom-menu {
+  min-width: 22px;
+  padding: 0 8px;
+  color: @accent;
+  font-size: 16px;
+}
+
+#workspaces button {
+  min-width: 20px;
+  margin: 3px 2px;
+  padding: 0 5px;
+  color: @muted;
+  background: transparent;
+  border-radius: 3px;
+}
+
+#workspaces button:hover {
+  color: @foreground;
+  background: @surface;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#workspaces button.active,
+#workspaces button.active:hover,
+#workspaces button.focused,
+#workspaces button.focused:hover,
+#workspaces button.active label,
+#workspaces button.focused label {
+  color: #000000;
+  background: @accent;
+}
+
+#workspaces button.urgent {
+  color: @background;
+  background: @urgent;
+}
+
+#mode {
+  margin-left: 8px;
+  padding: 0 8px;
+  color: @background;
+  background: @warning;
+}
+
+#window {
+  padding: 0 12px;
+  color: @muted;
+}
+
+#tray,
+#pulseaudio,
+#network,
+#cpu,
+#memory,
+#battery,
+#clock {
+  margin: 0 3px;
+  padding: 0 7px;
+}
+
+#pulseaudio.muted,
+#network.disconnected {
+  color: @muted;
+}
+
+#battery.warning:not(.charging) {
+  color: @warning;
+}
+
+#battery.critical:not(.charging) {
+  color: @urgent;
+}
+
+#clock {
+  margin-right: 0;
+}
+
+tooltip {
+  background: @tooltip;
+  border: 1px solid @surface;
+}
+
+tooltip label {
+  padding: 4px;
+  color: @foreground;
+}
