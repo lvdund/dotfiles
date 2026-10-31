@@ -5,6 +5,8 @@ set $browser firefox
 
 font pango:FiraCode Nerd Font 12
 
+output "HDMI-A-1" mode 3840x1080@60Hz
+
 # Pure black background (no wallpaper image)
 output * bg #000000 solid_color
 output * dpms on
@@ -90,8 +92,8 @@ bindsym $mod+p exec grim ~/Pictures/screenshot-$(date +%F-%H%M%S).png
 bindsym $mod+Ctrl+Shift+p exec grim -g "$(slurp)" ~/Pictures/screenshot-$(date +%F-%H%M%S).png
 bindsym $mod+Ctrl+p exec grim -g "$(slurp)" - | wl-copy
 
-# Waybar
 exec waybar
+exec fcitx5 -d
 
 # Disable automatic display blanking
 # Do not launch swayidle or any DPMS timeout script
