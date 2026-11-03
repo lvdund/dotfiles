@@ -12,6 +12,7 @@
   ],
   "modules-center": [
     "clock",
+    "custom/notification",
     "sway/window"
   ],
   "modules-right": [
@@ -70,7 +71,7 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": ["", "", ""]
+      "default": ["", " ", " "]
     },
     "on-click": "pavucontrol",
     "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
@@ -83,7 +84,7 @@
     "format-ethernet": "󰈀 {ipaddr}",
     "format-linked": "󰈀 linked",
     "format-disconnected": "󰤭 offline",
-    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "format-icons": ["󰤯 ", "󰤟 ", "󰤢 ", "󰤥 ", "󰤨 "],
     "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ipaddr}\nDown: {bandwidthDownBytes}  Up: {bandwidthUpBytes}",
     "tooltip-format-ethernet": "{ifname}\n{ipaddr}\nDown: {bandwidthDownBytes}  Up: {bandwidthUpBytes}",
     "tooltip-format-disconnected": "Network disconnected",
@@ -117,8 +118,9 @@
   },
 
   "clock": {
-    "format": " {:%H:%M}",
-    "format-alt": " {:%A, %d %B %Y}",
+    "format": " {:%Y-%m-%d %H:%M}  ",
+    // "format": " {:%H:%M}",
+    // "format-alt": " {:%A, %d %B %Y}",
     "tooltip-format": "<tt>{calendar}</tt>",
     "calendar": {
       "mode": "month",
@@ -132,5 +134,25 @@
         "today": "<span color='#f8f8f8'><b><u>{}</u></b></span>"
       }
     }
+  },
+  "custom/notification": {
+    "tooltip": true,
+    "format": "<span size='16pt'>{icon}</span>",
+    "format-icons": {
+      "notification": "󱅫 ",
+      "none": "󰂜 ",
+      "dnd-notification": "󰂠 ",
+      "dnd-none": "󰪓 ",
+      "inhibited-notification": "󰂛 ",
+      "inhibited-none": "󰪑 ",
+      "dnd-inhibited-notification": "󰂛 ",
+      "dnd-inhibited-none": "󰪑 "
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
   }
 }
