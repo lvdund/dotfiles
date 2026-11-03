@@ -2,6 +2,10 @@
 
 1. Install:
 
+```bash
+cargo install gitui --locked
+```
+
 2. Screen - no off:
 ```bash
 sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target suspend-then-hibernate.target

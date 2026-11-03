@@ -10,7 +10,7 @@ DOTFILES_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd) || exit 1
 
 cd "$HOME/.config" || exit 1
 
-rm -rf nvim fish kitty sway greetd waybar tmux swaync
+rm -rf nvim fish kitty sway greetd waybar tmux swaync gitui
 
 stow --dir="$DOTFILES_DIR" --target="$HOME/.config" config
 
