@@ -93,6 +93,7 @@ bindsym $mod+Ctrl+Shift+p exec grim -g "$(slurp)" ~/Pictures/screenshot-$(date +
 bindsym $mod+Ctrl+p exec grim -g "$(slurp)" - | wl-copy
 
 exec waybar
+exec swaync
 exec fcitx5 -d
 
 # Disable automatic display blanking
