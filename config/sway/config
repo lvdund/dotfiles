@@ -81,11 +81,17 @@ bindsym $mod+Page_Down workspace next
 bindsym --whole-window $mod+button4 exec ~/.config/sway/workspace-scroll prev
 bindsym --whole-window $mod+button5 exec ~/.config/sway/workspace-scroll next
 
+# Sound
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +3%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -3%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
 # Mouse
 floating_modifier $mod normal
 
 # Float extension dialogs and volume control windows
-for_window [title="(?i).*(Extension:|Volum(?:e|n) Control|Fcitx Configuration).*"] floating enable
+for_window [title="(?i).*(Volum(?:e|n) Control|Fcitx Configuration).*"] floating enable
 
 # screenshot
 bindsym $mod+p exec grim ~/Pictures/screenshot-$(date +%F-%H%M%S).png
