@@ -28,7 +28,7 @@ gaps outer 2
 # Keyboard
 bindsym $mod+t exec $term
 bindsym $mod+b exec $browser
-bindsym $mod+d exec $menu
+bindsym $mod+a exec $menu
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+e exit
@@ -91,7 +91,7 @@ bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 floating_modifier $mod normal
 
 # Float extension dialogs and volume control windows
-for_window [title="(?i).*(Volum(?:e|n) Control|Fcitx Configuration).*"] floating enable
+for_window [title="(?i).*(Volum(?:e|n) Control|Fcitx Configuration).*|Extension: (Bitwarden Password Manager) - Bitwarden"] floating enable
 
 # screenshot
 bindsym $mod+p exec grim ~/Pictures/screenshot-$(date +%F-%H%M%S).png

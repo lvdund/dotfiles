@@ -1,4 +1,3 @@
-# Manually add paths to PATH (bypassing hm-session-vars.sh guard)
 # This ensures PATH works in non-login SSH sessions
 if not contains $HOME/.npm-global/bin $PATH
   fish_add_path $HOME/.npm-global/bin
@@ -113,5 +112,5 @@ $MAMBA_EXE shell hook --shell fish --root-prefix $MAMBA_ROOT_PREFIX | source
 # micromamba activate main
 
 source "$HOME/.cargo/env.fish" # For fish
-
-# nvm use v24.22.1
+mkdir -p ~/.npm-global
+npm config set prefix '~/.npm-global'

@@ -6,11 +6,11 @@
   "height": 25,
 
   "modules-left": [
-    "custom/menu",
-    "sway/workspaces",
-    "sway/mode"
   ],
   "modules-center": [
+    "custom/menu",
+    "sway/workspaces",
+    "sway/mode",
     "clock",
     "custom/notification",
     "sway/window"
